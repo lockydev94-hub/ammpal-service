@@ -1,0 +1,3 @@
+# Byte-for-byte preservation. `32` §4 records a measured byte-length and SHA-256 for every registered asset, and the validators recompute them; an
+# end-of-line rewrite on checkout would silently break those records and every "re-measured, not inherited" claim that cites them.
+* -text

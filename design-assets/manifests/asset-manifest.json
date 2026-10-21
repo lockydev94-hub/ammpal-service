@@ -1,0 +1,113 @@
+{
+  "manifest_version": "1.0",
+  "generated_on": "2026-10-21",
+  "schema_doc": "Docs/32-Asset-Manifest-and-Export-Spec.md",
+  "naming_rule": "AMM-[SURFACE]-[ASSET-TYPE]-[SUBJECT]-[SIZE]-v[NN].[EXT]",
+  "status_vocabulary": {
+    "REGISTERED": "A file that exists on disk and is recorded here. Says nothing about approval.",
+    "PLANNED": "Listed in asset-inventory.csv; no file exists yet.",
+    "GENERATED": "A file was produced but has not been reviewed. Never usable in a build.",
+    "APPROVED": "Reviewed by the named owner and cleared for production export.",
+    "REJECTED": "Reviewed and refused. The record is kept so the refusal is not re-litigated.",
+    "SUPERSEDED": "Replaced by a later version of the same asset_id.",
+    "BLOCKED": "Cannot be produced until the cited registered OD-* decision closes. A BLOCKED row names a decision, never a task - work that is merely not startable yet stays PLANNED with a note."
+  },
+  "records": [
+    {
+      "asset_id": "AMM-REF-ARCH-INFONODE",
+      "file": "visualize-image-of-project/AmmPal Service Architecture Infographic.png",
+      "format": "png",
+      "width_px": 1536,
+      "height_px": 1024,
+      "bytes": 1974544,
+      "sha256_16": "94bf8ef8e966c2a3",
+      "status": "REGISTERED",
+      "approval_status": "NOT_FOR_PRODUCTION",
+      "version": "v01",
+      "source": "third-party AI generation (ChatGPT), per visualize-image-of-project/chatgptrefference.txt",
+      "provenance": {
+        "tool": "ChatGPT (model not recorded)",
+        "prompt": "NOT RECORDED",
+        "licence": "NOT RECORDED",
+        "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T22:54 only",
+        "human_authored": false
+      },
+      "used_by": ["internal architecture reference only"],
+      "alt_text": null,
+      "dependencies": [],
+      "notes": "Dominant colours measured as #FFFFFF / #E6F5FE / #F0F9FE - a pale infographic render, not evidence of a brand palette. At 1.88 MB it cannot meet the 12 sec 9 web budget and must not be exported into any product surface while OD-COM-12 (design-asset IP) is open."
+    },
+    {
+      "asset_id": "AMM-REF-CALL-FLOW",
+      "file": "visualize-image-of-project/AmmPal Service Call Support Workflow.png",
+      "format": "png",
+      "width_px": 1536,
+      "height_px": 1024,
+      "bytes": 2106018,
+      "sha256_16": "2d087d4f2609dd7d",
+      "status": "REGISTERED",
+      "approval_status": "NOT_FOR_PRODUCTION",
+      "version": "v01",
+      "source": "third-party AI generation (ChatGPT), per visualize-image-of-project/chatgptrefference.txt",
+      "provenance": {
+        "tool": "ChatGPT (model not recorded)",
+        "prompt": "NOT RECORDED",
+        "licence": "NOT RECORDED",
+        "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:18 only",
+        "human_authored": false
+      },
+      "used_by": ["internal call/CCO workflow reference only"],
+      "alt_text": null,
+      "dependencies": [],
+      "notes": "Content overlap with Docs/05 sec 3 is not verified; the documents are the source of truth, not this image."
+    },
+    {
+      "asset_id": "AMM-REF-E2E-FLOW",
+      "file": "visualize-image-of-project/AmmPal Service End-to-End Workflow.png",
+      "format": "png",
+      "width_px": 1536,
+      "height_px": 1024,
+      "bytes": 2034344,
+      "sha256_16": "bd9d956edd53a12e",
+      "status": "REGISTERED",
+      "approval_status": "NOT_FOR_PRODUCTION",
+      "version": "v01",
+      "source": "third-party AI generation (ChatGPT), per visualize-image-of-project/chatgptrefference.txt",
+      "provenance": {
+        "tool": "ChatGPT (model not recorded)",
+        "prompt": "NOT RECORDED",
+        "licence": "NOT RECORDED",
+        "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:08 only",
+        "human_authored": false
+      },
+      "used_by": ["internal end-to-end booking flow reference only"],
+      "alt_text": null,
+      "dependencies": [],
+      "notes": "Any status label visible in this image is subordinate to the canonical codes in Docs/23 sec 2.3."
+    },
+    {
+      "asset_id": "AMM-REF-PRICING-FLOW",
+      "file": "visualize-image-of-project/AmmPal Service Pricing Workflow Infographic.png",
+      "format": "png",
+      "width_px": 1536,
+      "height_px": 1024,
+      "bytes": 2123134,
+      "sha256_16": "598ac375329c8cb1",
+      "status": "REGISTERED",
+      "approval_status": "NOT_FOR_PRODUCTION",
+      "version": "v01",
+      "source": "third-party AI generation (ChatGPT), per visualize-image-of-project/chatgptrefference.txt",
+      "provenance": {
+        "tool": "ChatGPT (model not recorded)",
+        "prompt": "NOT RECORDED",
+        "licence": "NOT RECORDED",
+        "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:24 only",
+        "human_authored": false
+      },
+      "used_by": ["internal pricing/settlement flow reference only"],
+      "alt_text": null,
+      "dependencies": [],
+      "notes": "Money shown here is illustrative. Docs/07 sec 7.6 is the money-flow source of truth and the currency format rule is 12 sec 7 XS-02."
+    }
+  ]
+}

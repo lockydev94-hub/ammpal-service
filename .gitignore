@@ -1,0 +1,6 @@
+# Pre-audit copies of Docs/ — kept on disk as the re-measurement baseline (`21` §1), not committed (4.7 MB of duplicate corpus).
+maintenance/backups/
+
+# Python bytecode from the checkers in maintenance/scripts/
+__pycache__/
+*.pyc

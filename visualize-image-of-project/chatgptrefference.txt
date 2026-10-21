@@ -1,0 +1,33 @@
+Done. I’ve saved the project under the master label AMMPAL-SERVICE-PROJECT-MASTER so we can continue future discussions consistently without conflicting with earlier decisions.
+AMMPAL-SERVICE-PROJECT-MASTER
+Canonical project memory · Single source of truth
+
+Saved
+
+
+Project identity
+- Brand: AmmPal Service
+- Domain: ammpalservice.com
+- Customer app: AmmPal Service
+- Provider app: AmmPal Partner
+- Central administration: AmmPal Control Center
+- Launch region: Odisha, India
+  Preserved business logic
+- Multi-city, multi-state and multi-branch architecture.
+- Company-owned branches and separately managed authorized platform-partner territories.
+- Automatic location-based branch and service-zone routing.
+- Complete customer booking, provider acceptance, service, invoice, payment and review workflow.
+- Partner commissions, weekly settlements, pricing, coupons, cancellations, finance, permissions and compliance requirements.
+- Existing technology direction and the generated business workflow diagram.
+
+How we will use this label
+Whenever you start a future conversation with AMMPAL-SERVICE-PROJECT-MASTER, I’ll use the saved project context to continue from our existing decisions.
+1. Preserve decisions: I won’t silently replace previously agreed business rules.
+2. Prevent conflicts: If a new requirement conflicts with an existing decision, I’ll identify the conflict before recommending a change.
+3. Separate confirmed and proposed ideas: Suggestions will not automatically become approved requirements.
+4. Maintain consistency: New workflows, diagrams, architecture documents and AI-agent prompts will follow the same project structure.
+5. Track important changes: When you approve a change to a core rule, we can update the master project memory accordingly.
+Recommended label to use in your next chat:
+AMMPAL-SERVICE-PROJECT-MASTER
+
+
