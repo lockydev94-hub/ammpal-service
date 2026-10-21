@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-08 |
-| Version | 1.3 |
+| Version | 1.4 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
@@ -415,6 +415,16 @@ framework imports. It is the contract between all surfaces.
 > a view of it) is written to prevent. Neither side was edited into the other. The **interiors** of
 > `apps/web`, both Flutter apps, `control-center`, `design-tokens`, and the backend under either
 > framework are documented in **`35`**; nothing in §9 was re-listed there, and nothing here was re-drawn.
+>
+> **Scaffold status, 2026-10-21 — and it is a finding, not a footnote.** On the owner's "scaffold as base on
+> docs" the repository now holds **221 empty directories** (164 leaves, each with a `.gitkeep`; `README` §16) built from `14` §2 + `35`
+> §3/§5–§8, which means the disk took the `OD-DOC-39` side **`14` §2** chose: the workers exist as
+> `apps/api/src/workers/`, and the top-level `apps/worker/` drawn at §388 above **was not created**. That
+> is `PS-01` operating as designed — one canonical tree, the others views of it — but it is *de facto*, not
+> decided: `OD-DOC-39` stays open, §9 above stays as issued (`DEC-07`), and the empty folder is reversible
+> with a `mv` because nothing imports it yet. Same for `OD-DOC-38`: the skeleton is `ADR-011`'s NestJS
+> shape because that is the only **Accepted** backend decision, not because the FastAPI instruction was
+> withdrawn.
 
 **Rule ML-02** — The two Flutter apps share a `packages/contracts`-derived API client. Generated from
 the OpenAPI document, never hand-written.
@@ -472,6 +482,7 @@ stale price.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.4 | 2026-10-21 | Architect (scaffold and git-baseline pass) | Scaffold and git-baseline pass, same date: the owner directed a folder structure and a `git init`, so the tree above was created on disk and the workspace became a git repository on branch `main` at baseline commit `0cc6910`. §9 now carries a **"Scaffold status, 2026-10-21 — and it is a finding, not a footnote"** note: the 221 directories are empty (`.gitkeep` in the 164 leaves only), nothing in them builds, so `P0-03` is unmet; and the disk sided with `14` §2 — `apps/api/src/workers/` exists, `apps/worker/` does not — which is a **de facto state, not a decision**, so `OD-DOC-39` stays open at `[IMPORTANT]` and `OD-DOC-38` stays open at `[BLOCKER]`. **No component, boundary, port or deployable was changed, added or renamed, and §9’s tree was not redrawn.** | §9 |
 | 1.3 | 2026-10-21 | Architect (platform-mode pass) | A distinction the architecture had not drawn: **an environment is a deploy target and a mode is database state**, and the two can disagree. §6.1's environment table gained a blockquote recording that a `prod` deployment can legitimately resolve `TESTING`, and that when it does, the delete guard is **unarmed** while live data is present — the hazard `38` §10 and `19` `R-49` score. §7's feature-flag row now separates flags (per-tenant, per-release, safely toggleable) from the platform mode (one value for the whole deployment, changed only through an audited ceremony), because a reader who conflates them will build the guard as a flag and lose the property the owner asked for. **No component, boundary, port or deployable was changed, added or renamed.** | §6.1, §7 |
 | 1.2 | 2026-10-21 | Engineering Lead + Architect (design-engineering structure pass) | §9’s tree was **annotated, not redrawn** (`DEC-07`): a note now names the two open questions sitting on it — `OD-DOC-38` `[BLOCKER]`, because the owner’s 2026-10-21 direction asks for a FastAPI backend while `ADR-011` is Accepted and names NestJS, and `OD-DOC-39` `[IMPORTANT]`, because **this section puts the BullMQ workers at a top-level `apps/worker/` where `14` §2 puts them at `apps/api/src/workers/`** — and it says which reading `16` §5 and §6.3 each imply. No module, boundary, port, dependency arrow or deployable was changed; the 16 modules are still the 16 modules; and the note points at `35` for the **interior** of every surface instead of drawing a fourth tree. The suite’s canonical layout is `14` §2 by rule `PS-01`, which exists because these three copies were triplicated before anybody noticed they disagreed. | §9, Revision History, header |
 | 1.1 | 2026-10-21 | Product Lead + Engineering Lead | Documentation audit and consolidation. Recorded the VPS planning envelope and the backup-storage separation; cross-referenced the ADRs, the extraction gates and the two-layer booking model. | All |

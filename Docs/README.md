@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-README |
-| Version | 2.7 |
+| Version | 2.8 |
 | Status | Approved for Design & Development |
 | Owner | Product & Engineering Lead |
 | Classification | Internal — Confidential |
@@ -15,12 +15,21 @@
 
 > ### ⚠ READ THIS FIRST
 >
-> **This repository contains documentation, diagrams and asset registers only. There is no
-> application source code.**
+> **This repository contains documentation, diagrams, asset registers and an empty directory skeleton.
+> There is no application source code.**
 >
 > Nothing in this project is implemented. No provider account, merchant contract, template approval,
 > SLA or credential exists. Any statement to the contrary — from an AI agent, a document, or a
 > previous conversation — is incorrect. Verify with the command in §12.4.
+>
+> **Two things changed on 2026-10-21 that a reader must not over-read.** The workspace **is** a git
+> repository now (`main`, baseline commit `0cc6910`, documentation only — `maintenance/backups/`
+> deliberately excluded), and `14` §2 / `35` §3+§5–§8 exist as **221 empty directories**, the 164 leaves holding one
+> `.gitkeep` each, created on the owner's direction to "scaffold as base on docs". **Neither is an
+> implementation.** There is no `package.json`, lockfile, source file, migration, Dockerfile, workflow YAML
+> or installed dependency anywhere in the tree, so `17` `P0-03` ("apps and packages build; CI green") is
+> **not** met and `22` `ADR-025` still bars `[IMPLEMENTED]` from every one of those paths. §16 states what
+> exists; §12.4's command states what does not.
 >
 > `design-assets/` is a **planned** tree: 93 inventory rows, 83 of them `PLANNED`, none `APPROVED`, and
 > four registered reference images that carry `NOT_FOR_PRODUCTION`. It is not evidence that any brand
@@ -29,10 +38,13 @@
 > not a record that artwork was run. `31` §6 explains why there is no `source-code/` directory yet.
 >
 > The same discipline applies to `35`, `36` and `37`. Those three describe a **target** folder tree per
-> surface, a library baseline and a set of component rules; **not one directory, `package.json` or
-> dependency listed in them exists on this workspace**, and `35` §4's FastAPI tree is explicitly
-> `[PROPOSED — CONTINGENT]` because it contradicts the Accepted `ADR-011`. Read the open decision
-> (`OD-DOC-38`) before reading the tree as a plan.
+> surface, a library baseline and a set of component rules. **The trees changed status on 2026-10-21**: at
+> the owner's direction ("scaffold as base on docs") `14` §2 and `35` §3/§5–§8 were created as **221 empty
+> directories** — 164 of them are leaves, and each holds one `.gitkeep` and nothing else. **No `package.json`, no dependency, no
+> source file, no migration and no CI configuration exists in any of them**, so `17` `P0-03` ("`apps/*` and
+> `packages/*` build; CI runs green") is **not** met and no directory is a module. The layout follows
+> `ADR-011` because it is the only **Accepted** backend decision on file; `35` §4's FastAPI tree remains
+> `[PROPOSED — CONTINGENT]` and was **not** scaffolded. Read `OD-DOC-38` before reading any tree as a plan.
 >
 > **`38` is in the same category: a specification, not a capability.** The platform mode it describes
 > (`TESTING` ⇄ `PRODUCTION`, the super-admin email-OTP promotion, the production delete guard, the
@@ -480,7 +492,9 @@ in logs, code, documentation or tickets.
 
 > ### 12.2 The Working Rules
 >
-> 8. **Inspect the actual codebase before asserting that a feature exists.** There is none yet.
+> 8. **Inspect the actual codebase before asserting that a feature exists.** There is none yet — what
+> exists from 2026-10-21 is a set of **empty scaffold directories** (§16), and an empty folder is not a
+> feature, a module or an `[IMPLEMENTED]` artifact (`22` `ADR-025`).
 > 9. **Never silently change a business rule.** A rule change is an ADR (`22`) or an open decision (`21`).
 > 10. **Never invent a production secret, provider contract, SLA or legal conclusion.**
 > 11. **Never bypass backend authorisation or financial validation.**
@@ -651,7 +665,7 @@ provisioning, the first guard, the first login and the first invoice. The comple
 | **OD-BK-04** | Is cash collection required at launch? | Phase 1 — customers pay cash in this segment |
 | **OD-DOC-12** | A **technician no-show** has no state and no transition (`23` defines `T-31` for the customer only) | Phase 1 go-live — the worst-reputation event has no defined answer |
 | **OD-14-01** | Prisma vs Kysely/Drizzle | Phase 0 — blocks the repo scaffold |
-| **OD-DOC-38** | **Which backend framework.** The owner's 2026-10-21 direction asks for a FastAPI folder structure; `ADR-011` is **Accepted** and says NestJS, and that tree appears in `14` §2, `08` §9 and `27` §6 | The repository scaffold and `git init` — `35` §2/§4 documents **both** layouts and decides neither |
+| **OD-DOC-38** | **Which backend framework.** The owner's 2026-10-21 direction asks for a FastAPI folder structure; `ADR-011` is **Accepted** and says NestJS, and that tree appears in `14` §2, `08` §9 and `27` §6 | Any **code** written into the scaffold — the empty directory skeleton (`14` §2 side A) and the docs-only `git init` both happened on 2026-10-21 by owner direction, and `35` §2/§4 still documents **both** layouts and decides neither |
 | **OD-DOC-40** | **Does the `PRODUCTION` delete guard yield to a statutory erasure request, or is it absolute?** The owner's instruction says production data "not able to delete from database"; `13` §6.1 and `09` §6 already promise erasure and retention purge (`38` §6.3, class C) | The first migration that ships a delete, and every data-retention runbook — an absolute ban contradicts a right this suite has committed to, and a yielding ban needs a named path with its own audit. **No legal conclusion is drawn here** (`00` §11); it goes to counsel. Scored as `19` `R-50` |
 | **OD-DOC-41** | **How do `TESTING`-origin transactions coexist with a gapless statutory document number series?** `FR-CMP-05` requires gapless-per-entity-per-FY and `ADR-015` makes an issued document immutable, so a test invoice written into the live series is a hole nobody can explain to a tax review (`38` §8.3; recommended-but-unapproved: a separate non-statutory `T-` series) | The first seed script and the first invoice fixture — `17` `P0-15` puts the origin marker before the first transactional migration, and this question is why |
 | **OD-10-06** | Which permission token guards which endpoint — 117 route rows in `10` §4, 92 tokens in `03` §4, nothing joins them, and 29 of those tokens use actions `03` §3.2 never declared | Every guard, and therefore every authenticated route — **`RBAC` cannot be coded against a document that does not say** |
@@ -667,7 +681,9 @@ provisioning, the first guard, the first login and the first invoice. The comple
 | **OD-DOC-08** | Which phase is Cuttack in, and is the six-month target real (`26`) or 28 weeks (`17`)? | The launch map and every date quoted to a partner |
 | **OD-COM-01/02/03/05** | Executed agreement, payment method, acceptance conditions, contracting entity | The next instalment and production invoicing |
 
-**The complete `[BLOCKER]` set — 45 items, grouped by what they gate.** Every entry's question,
+**The complete `[BLOCKER]` set — 47 register rows, grouping the 45 distinct decisions** (`OD-DEV-01`
+and `OD-08-01` are one question, as are `OD-DEV-05` and `OD-08-05`; see the note under the table),
+**grouped by what they gate.** Every entry's question,
 owner, recommended answer and deadline live in `21`; this list exists so nobody has to open `21` to
 know the size of the gap.
 
@@ -679,7 +695,7 @@ know the size of the gap.
 | Commercial — before production invoicing | 1 | `OD-COM-05` |
 | Commercial — before go-live | 1 | `OD-COM-06` |
 | Repo scaffold | 4 | `OD-08-02` · `OD-14-01` · `OD-14-03` · `OD-14-04` |
-| Repository scaffolded at all / `git init` | 1 | `OD-DOC-38` |
+| Code written into the scaffold (`git init` and the empty directory tree already happened, 2026-10-21) | 1 | `OD-DOC-38` |
 | App scaffold | 1 | `OD-14-02` |
 | First guard written | 1 | `OD-10-06` |
 | Catalogue module scaffold | 1 | `OD-DOC-13` |
@@ -712,8 +728,11 @@ distinct decisions.
 
 `OD-DOC-38` is placed **before `OD-14-01`** deliberately: the ORM question is asked inside a framework,
 and Prisma and Kysely are TypeScript-only choices. Answering `OD-14-01` first, then switching the
-backend, re-asks it. It is also the only row in this chain that gates an act this workspace has not
-performed and is not permitted to perform casually — `git init`. `OD-DOC-39` rides with it, because the
+backend, re-asks it. It was also the only row in this chain that gated an act this workspace had not
+performed — `git init` — **and that act has now happened, on the owner's direction of 2026-10-21**, with a
+documentation-only baseline commit and an empty directory skeleton, so the row no longer gates the
+*repository*; it still gates the *code*, because nothing may be written into those directories until the
+framework is decided in `22` rather than inferred from `ADR-011`. `OD-DOC-39` rides with it, because the
 worker's placement and its library are both consequences of the same answer.
 
 **`OD-DOC-40` and `OD-DOC-41` sit immediately after `OD-14-01` and before anything runs, for one reason:
@@ -822,8 +841,20 @@ Recorded in `26-Commercial-Scope-and-Delivery-Boundaries.md`.
 ## 16. Repository Layout
 
 ```
-ammpal-service/
+ammpal-service/                    ← git working copy since 2026-10-21, branch `main`
+│                                      baseline commit 0cc6910 (documentation only)
+├── .gitignore                     ← excludes maintenance/backups/ (see below) and __pycache__/
+├── .gitattributes                 ← `* -text`: byte-for-byte, so `32` §4's hashes survive a checkout
 ├── Docs/                          ← this suite (39 numbered documents + README)
+├── apps/                          ← SKELETON ONLY — 204 dirs here, 221 across the scaffold; .gitkeep in 164 leaves
+│   ├── api/src/{common,config,database,workers,modules/<16 × 4 layers>}, api/test
+│   ├── web/app/(marketing|catalogue|technicians|booking|account|legal), components, features, lib, styles, public
+│   ├── control-center/src/{routes,nav,components/{data,charts,status},features,realtime,lib}
+│   ├── customer-app/lib/ + partner-app/lib/   (core/{tokens,api,formatters,l10n,widgets}, features/<x>/{data,domain,presentation})
+├── packages/                      ← contracts, design-tokens/{tokens,build}, api-client, config, testing, ui
+├── infra/                         ← docker, ansible, nginx, monitoring
+├── scripts/                       ← codegen, db ops, seed (`14` §2) — **empty**, and not the checkers
+├── .github/workflows/             ← **empty**; `16` §3's pipeline is not written
 ├── design-assets/                 ← 9 numbered asset folders + manifests/ + previews/
 │                                       (11 top-level, 25 including sub-folders; 2 files, both
 │                                        registers — no artwork generated or authored)
@@ -832,31 +863,45 @@ ammpal-service/
 ├── maintenance/
 │   ├── scripts/                   ← the eight `.py` checkers (validate, count, contrast, inventory)
 │   │                                       — moved here from the root; still run **from the root** (§12.5)
-│   └── backups/                   ← three timestamped copies of this folder, newest first
+│   └── backups/                   ← three timestamped copies of this folder — **not committed**
 │                                       Docs.backup-20261021-083739  ← pre-audit baseline (`21` §1, `19` R-44)
 │                                       Docs.backup-20261021-134424  ← pre-design-pass
 │                                       Docs.backup-20261021-192555  ← taken before the path edits above
-├── visualize-image-of-project/    ← 4 source infographics + project memory
-└── (no application source code — Phase 0 deliverable)
+└── visualize-image-of-project/    ← 4 source infographics + project memory
 ```
+
+**What the scaffold is, and what it is not.** Created on 2026-10-21 at the owner's direction, "scaffold as
+base on docs": the directories are `14` §2 (top level and `apps/api`), `14` §2.1 (the four module layers
+`domain` / `application` / `infrastructure` / `interfaces`, × the 16 modules) and `35` §5 / §6 / §7 / §8
+(each surface's interior), copied from those documents rather than invented — and **nothing else was
+added**: no `package.json`, no `tsconfig`, no lockfile, no source file, no migration, no CI YAML, no
+dependency installed. `ADR-011` is Accepted and is the only accepted backend decision on file, so side A
+(NestJS) is what was created; `35` §4's FastAPI tree was **not**. `17` `P0-03`'s exit test is "apps and
+packages **build**, CI green" — a folder list builds nothing, so `P0-03` is **open**, and `22` `ADR-025`
+still forbids the `[IMPLEMENTED]` tag on any of this.
+
+**Two naming collisions, recorded rather than smoothed:** `14` §2 writes `docs/` lowercase while the
+folder is `Docs/` (this suite — one directory, not two), and its `scripts/` is for codegen/db/seed while
+the **documentation checkers live in `maintenance/scripts/`**. Both are annotated on `14` §2's tree.
 
 **Why `maintenance/` and not deletion:** the backups are the evidence base — the 231-row register, the
 117-endpoint and 84-entity baselines quoted in `21` §1 and `10` §4.6 were re-derived from
 `Docs.backup-20261021-083739`, and `38`/`28`/`21` cite those deltas to prove the mode pass' figures were
 measured rather than inherited. The scripts are the only way to re-measure anything in this suite. Both
-are therefore kept, and both are moved out of the root so that a directory listing of the workspace no
-longer looks like a started implementation. **When `git init` runs, `maintenance/backups/` should be
-committed or excluded deliberately, not accidentally** — 4.7 MB of duplicated corpus in every clone is a
-decision, not a default (`OD-DOC-38` still gates the scaffold itself).
+were therefore relocated rather than deleted. At `git init` the choice was made **deliberately**:
+`.gitignore` excludes `maintenance/backups/` (4.7 MB of duplicated corpus in every clone) and everything
+else, including `Docs/` and the empty scaffold, is committed.
 
 Target source layout, module structure and coding rules: `27` §6, `14` §2, `08` §9; the **interior of
 every surface** — website route tree, both Flutter apps, both dashboards, and the backend under either
-contingent framework: `35`. **None of those directories exists**; they are the layout a scaffold will
-follow, written down so that a scaffold cannot invent one. `design-assets/`
+contingent framework: `35`. Those directories now **exist and are empty**; the documents remain the
+reason they are shaped as they are, written down first so that a scaffold could not invent a layout.
+`design-assets/`
 holds folders and registers, **not masters** — `31` §6 records the four deliberate deviations, including
-why no `source-code/` directory exists (`14` §2 and `08` §9 already fix the layout, and `OD-14-01`/`03`/
-`04` are open). The repository is **not a git working copy**, so nothing here has a commit hash; `32` §4
-substitutes a recorded byte-length and SHA-256 per registered file.
+why no `source-code/` directory exists (the layout is `apps/` per `14` §2 and `08` §9, and `OD-14-01`/`03`/
+`04` are open). The repository **is** now a git working copy, so history begins at `0cc6910`; `32` §4's
+recorded byte-length and SHA-256 per registered file are still kept, because they were the integrity gate
+before history existed and `git` alone would not have caught a silent re-export.
 
 ---
 
@@ -882,6 +927,7 @@ substitutes a recorded byte-length and SHA-256 per registered file.
 
 | Version | Date | Author | Summary |
 |---|---|---|---|
+| 2.8 | 2026-10-21 | Product & Engineering Lead (scaffold and git-baseline pass) | Scaffold and git-baseline pass. §1’s READ-FIRST now states that the repository holds documentation, diagrams, asset registers **and an empty directory skeleton** — and still no application source code — naming the git baseline (branch `main`, commit `0cc6910`), the 221 empty directories with `.gitkeep` in their 164 leaves, and recording that **`P0-03` is not met** and `ADR-025` still bars any `[IMPLEMENTED]` claim. The `35`/`36`/`37` block now says the trees **stopped being hypothetical** while holding **no `package.json`, no dependency, no source file, no migration and no CI configuration**. §12.2 item 8, §12.4 and §12.5 give the checkers’ new home `maintenance/scripts/` and the pre-audit corpus `maintenance/backups/`, with `count_rows.py` documented root-plus-path and `lint_mermaid.py` expecting the measured 27 blocks. §13.1’s `OD-DOC-38` gate row and §13.2’s `git init` paragraph are restated: the act has happened, so the row no longer gates the **repository**, it gates the **code**. §16’s tree was fully rewritten to show `.gitignore`, `.gitattributes`, `apps/`, `packages/`, `infra/`, `scripts/`, `.github/workflows/` and `maintenance/`, plus three new paragraphs — what the scaffold is and is not, the two naming collisions (`docs/` vs `Docs/`, `scripts/` vs `maintenance/scripts/`), and why `maintenance/` was used instead of deletion. §13.1 also gained a count fix found while re-verifying it: the complete-set lead-in said **45 items** above a table that totals **47** and lists 47 unique IDs — now stated as 47 register rows grouping 45 distinct decisions, per the fold-up note under that table and this README's own rule that when §13 and `21` disagree, **`21` is the register and §13 is the one to fix**. Every scaffold figure in this pass is **re-measured from the filesystem**, not taken from the creation script’s own tally: **221 directories** (204 of them under `apps/`), **164 leaf directories each holding one `.gitkeep`**, **57 intermediate**, and **zero non-`.gitkeep` files anywhere in the tree** — which is also the machine-checkable form of “no source code”, and replaces the 167 the script printed. |
 | 2.7 | 2026-10-21 | Product & Engineering Lead (tooling and backup relocation) | The owner asked whether the pre-audit backups or the `.py` checkers could be deleted, and the answer recorded here is **no — and nothing was deleted**: both categories were **relocated** to `maintenance/scripts/` and `maintenance/backups/` so a root listing of the workspace no longer reads as a started implementation, which is the claim `ADR-025` and §12.4 exist to make. A third timestamped copy (`Docs.backup-20261021-192555`) was taken **immediately before** this pass' edits, per the standing rule that a bulk edit is preceded by a backup. §12.4 now names the new location and states that location changes nothing about the verdict; §12.5's per-script table, its known-good commands and its quantity-expectation block were rewritten for the new paths and **every command was re-run from the workspace root to prove the replacement text** — `validate_docs.py` 0 column mismatches / 0 unbalanced fences / 0 broken links / 0 possible secrets / 27 Mermaid blocks, `lint_mermaid.py` 27 blocks 0 issues, `validate_assets.py` 93 rows and 4 manifest records with 0 errors, `count_rows.py` **237 = 47 + 143 + 47** given an explicit path, and `contrast.py` argument-free reproducing `30` §3's ratios. `count_rows.py`'s recommended invocation changed from `cd Docs && python3 ../count_rows.py` to root-plus-path, because the flat sibling it hopped to no longer exists. §16's tree was **corrected, not just updated**: it listed the backups *inside* `Docs/`, where they have never been, and it now shows `maintenance/` with all three snapshots and records that committing or excluding the 4.7 MB backup corpus at `git init` must be a **deliberate act, not a default**. The scripts' behaviour is untouched — no source line was edited; every path still resolves against the caller's working directory, which is why five of them are still run from the root. |
 | 2.6 | 2026-10-21 | Product & Engineering Lead (platform-mode pass) | The owner asked for a **Testing/Production mode** — all data saved in the database, default Test, promotion requiring **super-admin email OTP verification**, and production data protected from deletion — and said that once the instruction is in the documents he would move to Phase 1. `38 Platform Mode & Data Lifecycle Guard` was issued at v1.0 `PROPOSED` as the single canonical home (state machine, four-layer deletion taxonomy, four enforcement layers, origin marking, promotion ceremony, default-state hazard), and everywhere else in this suite the change is a **pointer, a rule or a row, never a second specification** (`DEC-01`). The feature now exists as `01` §4.11 `FR-MODE-01`…`08`, `22` `ADR-026` (`Proposed`), `03` `FL-09`/`FL-10`, `09` §4.15 + `DB-30`, `10` §4.3/§6.1/§11, `13` §5.1, `14` `ENV-07`, `15` `TE-06`, `16` §2.1, `17` `P0-15`, `19` `R-49`/`R-50`, `20` §8/§9, `25` §25.0, `26` §3.2 item 15 + `OD-COM-13`, `27` `SEC-A-11` + step 35, `28` §3.10, `29` §4.2/§6.1/§7.1 + `U-29`, `35` §9/§10. **Measuring the instruction against requirements the suite already carried produced two new `[BLOCKER]`s the instruction did not anticipate** — `OD-DOC-40` (an absolute production delete ban versus the statutory erasure `13` §6.1 and `09` §6 promise, `R-50`) and `OD-DOC-41` (`TESTING` transactions versus `FR-CMP-05`'s gapless series and `ADR-015`'s immutability) — plus a hazard the default creates (`R-49`: `TESTING` on live infrastructure leaves production data unprotected until a ceremony nobody has any reason to run), and a dependency that is not bought: the email provider is `NOT YET PROCURED` (`24` P-06, `24` §15 A-06, `OD-MAIL-01`), and `29` §6.1 records that the guard as literally stated would refuse this programme's own schema-contract step. **So Phase 1 does not open, and this pass says so rather than agreeing:** `OD-DOC-38` still gates any scaffold and `git init`, `OD-COM-13` means nobody has priced the feature, and `17` `P0-15` puts mode and origin marking in Phase 0 *before* the first transactional migration — work with Phase 1 consequences. Register **237 = 47 + 143 + 47** (decomposition **230 + 3 + 4**, `OD-`-only scan **233**), risks **50**, ADRs **26**, FRs **99**, `10` §4 endpoints **122 rows / 116 paths**, tables **88**; `21` §1 was corrected by its own re-measurement after first publishing 236/142, and the correction is kept visible instead of overwritten. §13 rewritten with the new totals and the mode rows, §13.1's gate table now **47** and diffed ID-by-ID against `21`'s blocker set (none missing, none extra, none duplicated), §13.2's chain extended, §4.1 given a mode row, the READ-FIRST block given a paragraph saying plainly that **nothing here is protected against deletion today in either direction**, §5's index row for `38`, §5.1 a delete/purge reading path, §12.1's order to **36 steps**, §12.5's expected file count to **40** and its `lint_mermaid.py` expectation from the 26 blocks the note carried to the **27** the suite now contains (re-measured by the run that closed this pass, not inherited), §16 to **39 numbered documents**, §17 a data-removal path. **Nothing was implemented, scaffolded, generated, installed, renamed or deleted; no directory, table, credential, image or `git init`; no legal or tax conclusion drawn** (`00` §11, `ADR-024`) and no conflict resolved on either side of it (`DEC-07`). |
 | 2.5 | 2026-10-21 | Product & Engineering Lead (design-engineering structure pass) | The owner asked for the folder and file structure of every panel, dashboard, website and application plus the backend to be documented so design follows one rulebook, for the libraries, custom colour scheme, animations and effects to be chosen, for each surface's structure to be component-driven and premium rather than flat, and for the design rules themselves to become a document that can be updated when needed. Three documents were issued at v1.0 `PROPOSED`: **`35` Per-Surface Project Structure** (the interior of each surface — website route segments, both Flutter `lib/` trees, the Control Center, the token package, and **two** backend layouts, NestJS and contingent FastAPI — under rules `PS-01`…`PS-21`), **`36` Design Engineering Toolchain & Library Baseline** (`LB-01`…`LB-08`, the `13` §5.2 CSP gate, per-capability candidate tables for web and Flutter, ten named rejections) and **`37` Component Architecture & Design Consistency Rules** (`CA-00`…`CA-28`: the four-layer model, the ten-row component contract, the five-axis variant API, role-named `--amm-*` properties, nine motion recipes, the 14-item review checklist and the six-step procedure for updating a design rule). **No directory, `package.json` or dependency in any of the three exists**, and none was created: the READ-FIRST block now says so, §4.1 gained a row saying so, and `35` §4 is labelled `[PROPOSED — CONTINGENT]` because it contradicts the Accepted `ADR-011`. The register went to **231 rows = 45 `[BLOCKER]` + 140 `[IMPORTANT]` + 46 `[NICE]`** (`OD-DOC-38` is the new blocker: FastAPI as instructed versus NestJS as decided, copied into three documents; `OD-DOC-39` is the first divergence between those copies — worker placement; plus `OD-14-09`…`13`). §13 was rewritten and now names **three** colliding figures rather than one: the single-ID count is **224**, which is exactly the total this suite published one pass ago, and the `OD-`-prefix scan is **227**, so two partial scans each look like a confirmed number; the decomposition **224 + 3 shared-ID + 4 `ORG-*`-led = 231** was re-derived, not inherited. §13.1's blocker tables carry `OD-DOC-38` in both places and the gate table's total is **45**; §13.2 places it **above** `OD-14-01`, because an ORM is chosen inside a framework. §14 gained step **12**, which is the answer to “when need update design rules then will be do that”: a rule change follows `37` §11.3, and a new component name may be added only by amending `12` §6.2 (`CA-00`). **§12.5 is new and it records a defect this pass caused.** `validate_docs.py` and `lint_mermaid.py` glob `Docs/*.md` against the **working directory**, so run from inside `Docs/` they scanned **zero files** and printed an all-green result; this pass ran them that way and only noticed because a suite full of fenced code cannot legitimately report `FENCE LANGUAGES: {}`. The section now states, per script, which directory each must run from (five from the root, `count_rows.py` from `Docs/`, `contrast.py`/`show_table.py` take explicit paths), gives the known-good command sequence, and says that **a zero-file scan is a broken invocation, not a pass**. `27` §2 carries the same rule. Figures and cross-references propagated under `DC-04` to `README` §§1–§17 (index rows for `35`–`37`, `19` at 48 risks, `21` at 231/45, `30`–`37` in the caveat span, `OD-DOC-30`…`39`, a new directory-creator reading path in §5.1, the 35-step order in §12.1, §16 at 38 numbered documents, §17 paths) and to `08` v1.2, `12` v1.4, `13` v1.6, `14` v1.4 (whose §13 gained the five new rows), `22` v1.3 (**`ADR-011` annotated `[CONTESTED — not superseded]`**, status and deciders untouched, both resolution paths spelled out, still 25 ADRs), `26` v1.5, `27` v1.6 (steps 32–34, 35 steps), `28` v1.5 (seven new §5 rows), `29` v1.3 (§4.8 renamed and extended by eight items, new `U-28`), `30` v1.2, `31`–`33` v1.2, `34` v1.1, `19` v1.6, `21` v1.9. **Every conflict was annotated on both sides** (`DEC-07`): the framework question in `22`, `14` §2, `08` §9 and `35` §2, the worker question in `14` and `08`, and neither document was edited into the other. Re-validated **from the correct directories**: the scan globbed **39 files** (38 numbered documents + README), **0 table column mismatches, 0 unbalanced fences, 0 broken local links, 0 possible secrets, 26 Mermaid blocks with 0 issues, 0 asset-validator errors** with 93 inventory rows (83 `PLANNED`, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`**) and 4 manifest records, and the register printed **231 = 45 + 140 + 46**, `OD-`-only **227**, `ORG-*`-led **4**, **0 duplicate IDs**; §13.1's 45-ID gate table was diffed against `21`'s blocker set and matches exactly — none missing, none extra. **No image was generated, no library was installed, no directory was created, no `FR-*`, route, token, table, column or amount was invented, nothing was renamed or deleted, and the workspace was not `git init`-ialised** — `OD-DOC-38` gates that step and `19` scores it as `R-48`. Nothing in this row is an approval (`DEC-03`). |

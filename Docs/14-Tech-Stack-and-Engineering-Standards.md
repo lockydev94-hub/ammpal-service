@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-14 |
-| Version | 1.5 |
+| Version | 1.6 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
@@ -143,15 +143,25 @@ ammpal-service/
 │   ├── api-client/                # generated OpenAPI clients (web + apps)
 │   ├── config/                    # eslint, tsconfig, prettier, editorconfig
 │   └── testing/                   # factories, fixtures, builders, mocks
-├── docs/                          # ← this directory
+├── docs/                          # ← this directory — it exists as `Docs/` (capital D). One directory, not two.
 ├── infra/
 │   ├── docker/                    # Dockerfiles, compose
 │   ├── ansible/                   # VPS provisioning
 │   ├── nginx/                     # reverse proxy + TLS
 │   └── monitoring/                # prometheus, grafana, loki, alert rules
-├── scripts/                       # codegen, db ops, seed
+├── scripts/                       # codegen, db ops, seed — NOT the documentation checkers,
+│                                  #   which live in `maintenance/scripts/` (`README` §12.5, §16)
 └── .github/workflows/
 ```
+
+> **Scaffold status, 2026-10-21.** At the owner's direction ("scaffold as base on docs") this tree and the
+> `35` §5–§8 interiors were created as **221 empty directories**, `.gitkeep` in each of the 164 leaves, and committed on top
+> of a documentation-only baseline. **Nothing in them is code**: no `package.json`, `tsconfig`, lockfile,
+> source file, migration, Dockerfile or workflow YAML exists, so `17` `P0-03` ("`apps/*` and `packages/*`
+> build; CI runs green") is **not** met and `ADR-025` still bars the `[IMPLEMENTED]` tag from every path
+> below. The layout follows side A because `ADR-011` is the only **Accepted** backend decision on file;
+> `OD-DOC-38` remains open and `35` §4's FastAPI alternative was not created. `08` §9 and `27` §6 mirror
+> this tree and disagree about worker placement (`OD-DOC-39`) — `35` `PS-01` names §2 above as canonical.
 
 > **This tree is the target for the application repository; it is not the current workspace, and no
 > directory in it has been created.** The workspace today holds `Docs/` (capitalised — this suite),
@@ -477,6 +487,7 @@ export class DomainError extends Error {
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.6 | 2026-10-21 | Eng Lead (scaffold and git-baseline pass) | §2’s canonical tree was **annotated, not redrawn** (`DEC-07`): the `docs/` line now records that it exists as `Docs/` (capital D), and the `scripts/` line records that it is **not** the documentation checkers, which live at `maintenance/scripts/`. A new **"Scaffold status, 2026-10-21"** blockquote states what a tree diagram cannot: 221 directories (164 leaves) were created empty from this section and `35` §3/§5–§8, `.gitkeep` marks only the leaves, and no `package.json`, dependency, source file, migration or CI configuration exists in any of them, so `P0-03` ("`apps/*` and `packages/*` build; CI runs green on an empty app") is **not met**. Side A of the `OD-DOC-38` conflict — this section’s NestJS line, the only **Accepted** decision on the record — is the one built, and the note says that is a choice of evidence, not a resolution; `08` §9 and `27` §6 mirror the same tree and disagree with it via `OD-DOC-39`. **No standard, version, dependency or `ES-*` rule was changed.** | §2, §2.1 |
 | 1.5 | 2026-10-21 | Eng Lead (platform-mode pass) | **`ENV-07`** added in §11: the platform mode is database state, not configuration. An environment variable may **seed the row once, at first boot, and never override it afterwards**; any code path that reads the mode from config, a feature flag, a request header or a client store is a defect, and the standard is stated here so a reviewer can reject it by rule number. This is the engineering-standards half of `38` `PM-02`/`PM-04` and it exists because the failure mode is invisible — a correctly-built screen can be pointed at a `TESTING` database and show the wrong thing convincingly. | §11 |
 | 1.4 | 2026-10-21 | Engineering Lead + Frontend Lead (design-engineering structure pass) | The document this pass had to annotate rather than rewrite, because its §2 tree is the suite’s **canonical** one (`35` `PS-01`). §2’s lead blockquote now names both open questions sitting on that tree — `OD-DOC-38` `[BLOCKER]` (FastAPI as instructed versus Accepted `ADR-011`’s NestJS) and `OD-DOC-39` `[IMPORTANT]` (worker placement, where `08` §9 diverges) — and says why the interiors live in `35` instead of being drawn a fourth time here. §2.1 is now labelled the **NestJS** interior, with `35` §4 named as the contingent Python one and `ES-01`’s purity requirement explicitly surviving a change of language. §1.3 gained rule **6**: a front-end dependency is chosen from `36` §4/§5, and a capability with no admitted library goes to `21` before it goes into `package.json`. §6.1 and §6.2 gained one-line pointers to `36` and `37`, so the `FE-*`/`FL-*` rules stay rules rather than catalogues. **§13 gained `OD-14-09`…`13`** (styling engine, animation runtime, charting and data-grid, workshop and visual regression, token build) in the register’s own order and wording. No stack row, version, cadence rule or `ES-*`/`FE-*`/`FL-*`/`CI-*` rule was altered. | §1.3, §2, §2.1, §6.1, §6.2, §13, Revision History, header |
 | 1.3 | 2026-10-21 | Engineering Lead (design-system and asset pass) | One blockquote added under §2, changing no stack choice, module path or rule. It states that the tree in §2 is the **target application repository** and that none of its directories exists yet; that the current workspace holds `Docs/`, `visualize-image-of-project/` and `design-assets/`; that `design-assets/` is intentionally absent from the tree because `31` §6 places asset masters at workspace root beside their two registers; and that **no `source-code/` directory exists**, because `OD-14-01`/`OD-14-03`/`OD-14-04` are open and §2/`08` §9 already fix the layout. Added to help an agent that reads §2 and concludes the scaffold has been agreed. | §2, header, Revision History |

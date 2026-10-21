@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-22 |
-| Version | 1.5 |
+| Version | 1.6 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
@@ -420,6 +420,17 @@ clients are generated from it, never hand-written.
 > withdraws the instruction, and this row stands exactly as written. Both trees are documented meanwhile —
 > the NestJS interior in `14` §2.1, the contingent Python one in `35` §4 — so that neither outcome
 > silently loses the 16 module boundaries, the `ES-01` purity rule or ADR-012's contract bridge.
+>
+> **Follow-up, same date.** Asked which backend the Phase 0 scaffold should use, the owner answered,
+> verbatim — *"Currently backend create folder strture, means scaffold as base on docs. also make sure
+> when this backend pogramming then will be advance with best technology"*. That is an instruction to
+> follow **the documents**, so the folder skeleton created on 2026-10-21 is this ADR's side: `14` §2 and
+> §2.1, `35` §3/§5–§8, 221 empty directories (164 leaves), **no `package.json`, no source file, no dependency**
+> (`README` §16). **"Advance with best technology when programming" is a deferral, not a ratification** —
+> it neither withdraws the FastAPI instruction nor confirms this row in the owner's own words, so
+> `OD-DOC-38` stays `[BLOCKER]`, this ADR stays **Accepted-with-`[CONTESTED]`-marker**, and the first
+> source file remains the point where a decision of record is actually required. **ADR-011 was not
+> amended, superseded or re-dated by this note.**
 
 ---
 
@@ -817,6 +828,10 @@ Get-ChildItem "C:\MyWorkspace\Ammpal-Service" -Recurse -File `
 > from the glob above, exactly as in `README` §12.4 and `27` §2, and the check again returns nothing on a
 > machine where the claim is true. **ADR-025-02 still holds**: no module, migration, pipeline or deployment
 > manifest exists, `[IMPLEMENTED]` remains unusable, and a `.py` that counts table rows is not a service.
+> **The empty scaffold created the same day does not change that verdict** — 221 directories, its 164 leaves holding one
+> `.gitkeep` each, compile nothing, import nothing and deploy nothing, and a folder named
+> `apps/api/src/modules/booking/domain/` is not a domain module any more than an empty drawer is a filing
+> system. The check above still returns nothing; run it, do not read this note instead.
 > A later ADR should restate the decision's *evidence* sentence to name these two categories; until then
 > this note is the correction, and the ADR text is left as issued.
 
@@ -937,6 +952,7 @@ in the documents named.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.6 | 2026-10-21 | Engineering Lead (scaffold and git-baseline pass) | `ADR-011` gained a **"Follow-up, same date"** paragraph inside its existing `[CONTESTED]` block: it quotes the owner’s scaffold direction verbatim, records that the instruction is **answered for the folder structure and still open as a decision of record**, and names "advance with best technology" a deferral rather than a ratification. The Decision block is untouched — the ADR remains **Accepted**, its Deciders unchanged, `OD-DOC-38` keeps its `[BLOCKER]`/`[CONTESTED]` marks, and superseding this line still takes a new ADR under §5 (`DC-04`). `ADR-025`’s note now names `maintenance/scripts/`, says the checkers were **relocated, not deleted**, and adds **the empty scaffold created the same day does not change that verdict**: no module, migration, pipeline or deployment manifest exists and `[IMPLEMENTED]` remains unusable. **No ADR was superseded, re-statused or rewritten.** | §ADR-011 note, §ADR-025 note |
 | 1.5 | 2026-10-21 | Engineering Lead (tooling and backup relocation) | **No decision was taken, reversed, amended or superseded, and no ADR was added.** `ADR-011` and `ADR-026` are untouched. `ADR-025`'s 2026-10-21 note was corrected to name `maintenance/scripts/` as the tooling's location and to say plainly that the eight checkers were **relocated, not deleted**, because they are the suite's only re-measurement path. `ADR-025-02` still holds: no module, migration, pipeline or deployment manifest exists, `[IMPLEMENTED]` remains unusable, and its PowerShell evidence check still returns nothing on a machine where the claim is true. | §ADR-025 note |
 | 1.4 | 2026-10-21 | Architect + Security Owner (platform-mode pass) | **`ADR-026` — Platform mode gates destructive data operations; promotion requires a super-admin step-up**, Status **Proposed** (deciders: *none has signed*). Six decision rules, and **five alternatives recorded as rejected with reasons** — including the two tempting ones: trigger-only enforcement (a trigger cannot see the reason, the actor or the ceremony, and it fires inside the pipeline's own migration) and UI-only enforcement (bypassed by `psql`, a script, or the same account that requested the transition). Consequences name the cost rather than hiding it: a fourth database connection identity (`OD-DOC-43`), the Phase-0 sequencing that `17` `P0-15` carries, and the two `[BLOCKER]` collisions. The status note makes acceptance conditional on `OD-DOC-40`/`41`/`42`, on `ADR-024`, on the `01` §8 charter route and on `26` §3.2's written scope change, and it points at `OD-DOC-38` as the upstream gate on any scaffold. §2's index and §7's unresolved list updated. **ADR count measured 25 → 26 (`ADR-001`…`ADR-026`, no gap); `ADR-011` was not touched.** | §2, §7, ADR-026 |
 | 1.3 | 2026-10-21 | Founder + Engineering Lead (annotated by the design-engineering structure pass) | **No decision was taken, changed, superseded or reversed, and no ADR was added — the count stays 25.** `ADR-011` gained a `[CONTESTED — not superseded]` annotation, which matters because this document is step **1** of every reading order and an unannotated Accepted row is how an agent scaffolds the wrong framework: the owner’s 2026-10-21 FastAPI instruction is recorded as `[REPORTED]`, while Status, Date, Deciders and Decision text are untouched, and the annotation spells out the two lawful outcomes — a **new ADR superseding the backend line**, with the `DC-04` cascade that forces (`14`, `08`, `27`, `15`, `16`, `README` §3, plus `OD-14-01` reopened because Prisma and Kysely are TypeScript-only), or the instruction withdrawn and this row standing as written. Neither was done here (`DEC-03`, `DEC-07`). `ADR-012` is unaffected and is named in the annotation as the reason a framework change stays inside `apps/api`. | ADR-011, Revision History, header |

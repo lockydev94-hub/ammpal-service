@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-38 |
-| Version | 1.0 |
+| Version | 1.1 |
 | Status | **PROPOSED** — not approved; five owner decisions open (§13) |
 | Owner | Engineering Lead (mechanism) + Founder (the decision to adopt it) |
 | Classification | Internal — Confidential |
@@ -389,13 +389,18 @@ everything else. Nothing below is a duplicate specification, and if two of these
 | 6 | Adopt or reject `ADR-026`, and amend `00` §14 / `26` §3 | Founder | The whole feature |
 
 **Sequencing against the delivery plan (`17`).** `OD-DOC-38` (`[BLOCKER]`, the backend framework) still
-gates any repository scaffold and any `git init` — `38` cannot be implemented before that is decided,
-because the guard lives in the backend and its migration tool. Beyond that, `PM-12`/`PM-13`
-(`record_origin`) must exist **before the first seeded booking**, or every pre-existing row is
-origin-unknown and `PM-17` cannot exclude it. `17` places the repo, environments and seed data in
+gates the guard's **implementation** — `38` cannot be built before that is decided, because the guard
+lives in the backend and its migration tool. What it no longer gates is the repository: on 2026-10-21 the
+owner directed "scaffold as base on docs", `git init` produced a documentation-only baseline, and `14` §2 /
+`35` §3's side-A layout exists as empty directories (`README` §16) — so `apps/api/src/database/` is a
+place a migration will go, not a migration, and nothing in this document is implemented. Beyond that,
+`PM-12`/`PM-13` (`record_origin`) must exist **before the first seeded booking**, or every pre-existing row
+is origin-unknown and `PM-17` cannot exclude it. `17` places the repo, environments and seed data in
 Phase 0, so the honest reading is: this feature is **Phase 0 work with Phase 1 consequences**, not a
-Phase 1 feature. A "move to Phase 1" that starts by scaffolding a backend without `OD-DOC-38` closed
-and without the origin column in the first migration buys two repairs instead of one.
+Phase 1 feature. A "move to Phase 1" that starts by writing the backend's first migration without
+`OD-DOC-38` closed and without the origin column in that migration buys two repairs instead of one — and
+that is precisely the state the empty scaffold leaves the project in: the folders are safe to pre-create,
+the `09` §4.15 columns and the `38` §7 enforcement layer are not.
 
 ---
 
@@ -436,4 +441,5 @@ cost of the feature as literally stated).
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.1 | 2026-10-21 | Engineering Lead (scaffold and git-baseline pass) | §12’s sequencing was rewritten for the two acts of 2026-10-21: `OD-DOC-38` still gates the guard’s **implementation** — which connection layer, which service, which framework decides `38` §7’s enforcement layers and `09` §4.15’s columns — but it no longer gates the **repository**, which now exists. The closing clause states the split the owner can act on: **the folders are safe to pre-create; the `09` §4.15 columns and the `38` §7 enforcement layer are not.** A dangling sentence left in the `record_origin` paragraph was repaired. **No `PM-*` rule, taxonomy class, enforcement layer, field or gate was changed**, and no table, migration or code was created. | §12 |
 | 1.0 | 2026-10-21 | Engineering Lead (documenting an owner instruction) | First issue. Records the owner's 2026-10-21 `[REPORTED]` instruction verbatim and specifies it as `PM-01`…`PM-24`: the two-state machine with guarded promote/demote, the email-OTP ceremony (with its dependency on the **unprocured** transactional-email provider P-06/A-06 and its intersection with `OD-SEC-01`), a four-class deletion taxonomy that preserves `03` §3.2's existing soft-delete contract and separates operator deletion from statutory erasure and scheduled retention purge, four enforcement layers with the database role split named as the real cost, `record_origin` marking for test data held in the same database, the gapless-statutory-numbering hazard, the fail-closed boot precondition for the "default is Test" rule, and the mode-indicator requirement without naming a component (`CA-00`). Registered `OD-DOC-40`…`44` in `21` (2 blockers), `R-49`/`R-50` in `19`, `FR-MODE-01`…`08` in `01`, `platform_mode`/`platform_mode_transitions` and the `record_origin` column in `09`, routes and two error codes in `10`, the control in `13`, `FL-09` and the `delete`-verb note in `03`, `ADR-026` in `22`, glossary terms in `20`, and pointers in `08`, `14`, `15`, `16`, `17`, `25`, `26`, `27`, `28`, `29`, `35` and `README`. **No code, directory, dependency, table in a live database, cost or legal answer was created; nothing is approved; `OD-DOC-38` still gates any scaffold or `git init`.** | All |

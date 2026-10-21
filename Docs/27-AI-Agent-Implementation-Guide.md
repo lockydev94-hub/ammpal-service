@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-27 |
-| Version | 1.8 |
+| Version | 1.9 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
@@ -199,9 +199,14 @@ already correct.
 > suite (`14` §2, `08` §9, here) and `08` §9 disagrees about the workers, which is `OD-DOC-39`; §2's
 > `apps/api/src/workers/` follows `14` §2, which `35`'s `PS-01` names canonical. (3) It is the top level
 > only — **the interior of every surface is `35`**, what may be installed inside it is `36`, and how a
-> component inside those directories must be shaped is `37`. Do not create any of these directories
-> before `OD-DOC-38` closes and `git init` happens, which is sequenced after the documents and the
-> assets, not during them.
+> component inside those directories must be shaped is `37`. **(4) The status of that sentence changed on
+> 2026-10-21.** The owner directed "scaffold as base on docs", `git init` was performed with a
+> documentation-only baseline, and this layout plus the `35` interiors now exist as **221 empty
+> directories**, one `.gitkeep` in each of the 164 leaves — no `package.json`, no source file, no config, no CI. So the
+> instruction to you is no longer "do not create these directories": it is **do not write code, a
+> manifest or a dependency into them while `OD-DOC-38` stands**, do not create a directory that is not in
+> `14` §2 / `35` first, and do not read an empty folder as an implemented module — `ADR-025` forbids the
+> `[IMPLEMENTED]` tag on it and `17` `P0-03` is **not** met because nothing builds.
 
 ```
 ammpal-service/
@@ -456,6 +461,7 @@ without saying so explicitly.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.9 | 2026-10-21 | Eng Lead (scaffold and git-baseline pass) | §2’s tooling paragraph now gives the checkers’ home `maintenance/scripts/` and the pre-audit corpus `maintenance/backups/` (relocated, not deleted), replaces the instruction to read a file count the validators do not print with the glob check and the `MERMAID BLOCKS` quantity, and records the measured behaviour: every script resolves paths against the **caller’s** directory, so `count_rows.py` wants the register path (root-plus-path form) from anywhere. §6 gained **correction (4)**: the per-surface directories from `14` §2 and `35` **now exist on disk** — 221 empty directories from the 2026-10-21 scaffold, `.gitkeep` in 164 leaves — so an agent that finds them must not read the skeleton as a completed task, and **must not write code, a manifest or a dependency into them while `OD-DOC-38` stands**. **No law, reading-order step, rule or prohibition changed** — `SEC-A-11` and step 35 stand as written. | §2, §6 Every scaffold figure in this pass is **re-measured from the filesystem**, not taken from the creation script’s own tally: **221 directories** (204 of them under `apps/`), **164 leaf directories each holding one `.gitkeep`**, **57 intermediate**, and **zero non-`.gitkeep` files anywhere in the tree** — which is also the machine-checkable form of “no source code”, and replaces the 167 the script printed. |
 | 1.8 | 2026-10-21 | Eng Lead (tooling and backup relocation) | §2's 'single most important fact' and its checker-invocation paragraph now point at `maintenance/scripts/`, and record that `maintenance/backups/` holds the three timestamped copies of `Docs/` the suite's re-measurement argument depends on — evidence, not clutter, **not to be deleted**. `count_rows.py`'s instruction changed from 'run from `Docs/`' to 'pass the register path', which is the form that survives the move and works from any directory. Verified rather than assumed: `contrast.py` runs argument-free from the new location and reproduces every ratio in `30` §3. **No law, reading-order step, rule or prohibition changed** — `SEC-A-11` and step 35 stand as written. | §2 |
 | 1.7 | 2026-10-21 | Eng Lead (platform-mode pass) | §9 gained **`SEC-A-11`**: an agent must read the mode **only** from `platform.platform_mode` — never from a header, a client store, an environment variable or a flag; never implement a UI-only guard; and **refuse to write a hard delete** where a soft delete or a status transition exists, raising the question to `21` instead of choosing silently. §4's step 3 now directs any agent to `01` §4.11 and `38` **before** writing delete, truncate, purge, migration or seed code, and **step 35 (`38`) was added to the mandatory reading order — 35 steps became 36, numbered `0`–`35`**, with the backend, frontend/mobile, QA, finance and DevOps shortcuts each gaining it. §4's lead figure was re-measured from the register (**237 rows, 47 blockers**) rather than carried forward. **§2's checker-invocation paragraph was corrected the same pass**: it told the reader to "read the file count `validate_docs.py` prints", and the script prints no file count (`README` §12.5 says so plainly) — the instruction now names the glob check and the `MERMAID BLOCKS` quantity, which `lint_mermaid.py` does print (**27** blocks, re-measured this pass, not inherited from the 26 the older notes carried). **No law, gate or module boundary was removed.** | §2, §4, §9 |
 | 1.6 | 2026-10-21 | Engineering Lead (design-engineering structure pass) | §4’s reading order gained **steps 32, 33 and 34** for `35`, `36` and `37` — 35 steps in total, numbered `0`–`34`, and the no-context shortcut now reads **“All 35 steps”**. The role table routes backend, frontend/mobile, QA and DevOps at the new documents, and §4’s lead figure was re-measured from `21`: **231 rows, 45 blockers**, `30`–`37` all `PROPOSED`. §4 now warns that **`OD-DOC-38` `[BLOCKER]` gates the scaffold itself** — it is why `35` documents two backend layouts, and creating a repository before that decision is how a framework argument becomes two half-built backends. §2 gained the **checker-invocation rule**, which this pass earned by being caught: `validate_docs.py` and `lint_mermaid.py` glob `Docs/*.md` against the working directory, so run from inside `Docs/` they scan **zero files and report green**; five scripts must run from the root, `count_rows.py` from `Docs/`, and a zero-file scan is a broken invocation rather than a pass (full table in `README` §12.5). §6’s “agreed target layout” was corrected to “one of three copies, two open questions” and points at `35` for the interiors. | §2, §4, §6, Revision History, header |

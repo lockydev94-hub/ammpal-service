@@ -1,8 +1,9 @@
 """Validates the asset register against the filesystem and against Docs/.
 
-Run from the project root:  python3 validate_assets.py
-Exit code 0 = clean. This is the integrity gate that stands in for version control,
-because the workspace is not a git repository.
+Run from the project root:  python3 maintenance/scripts/validate_assets.py
+Exit code 0 = clean. This is the integrity gate the registers needed before the workspace was a git
+repository, and it is still the gate now that it is one (git init, 2026-10-21): git records that a file
+changed, this records that the bytes on disk are the export the inventory row describes.
 """
 import csv, glob, hashlib, json, os, re, sys
 

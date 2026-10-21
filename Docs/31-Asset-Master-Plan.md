@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-31 |
-| Version | 1.2 |
+| Version | 1.3 |
 | Status | **PROPOSED — not approved.** No asset in this plan may be produced before `30` §12 item 1 (palette) and `OD-COM-12` (design-asset IP) close. |
 | Owner | Product Design Lead + Marketing Ops |
 | Classification | Internal — Confidential |
@@ -149,11 +149,14 @@ registered decision, 4 REGISTERED references** — 9 brand, 12 service, 6 websit
   blocker and put the real layout out of step with `14`. Front-end assets will live inside the app
   packages once that decision is made; `design-assets/` holds masters, not shipped code.
 
-**Version control is missing.** This workspace is not a git repository, so binary masters have no
-diff, no rollback and no history — the reason `asset-manifest.json` records `sha256_16`, byte size and
+**Version control arrived on 2026-10-21; the hash record stays.** This workspace was **not** a git
+repository when this plan was written, which is why `asset-manifest.json` records `sha256_16`, byte size and
 measured pixel dimensions for every file that exists, and `validate_assets.py` fails if the hash on
-disk no longer matches the record. Recommended (not performed without authorisation): `git init` with
-LFS before the first master is produced.
+disk no longer matches the record. It **is** one now — `git init` was performed at the owner's direction
+with a documentation-only baseline (`README` §16). That does **not** retire the recorded hashes: git
+proves a file changed, while `sha256_16` plus measured bytes and pixels prove the *export* is the one the
+document describes, which is the check `32` §4 actually runs. What git does newly enable is the rest of
+the recommendation, still **not performed**: `git lfs` before the first binary master is produced.
 
 ---
 
@@ -240,6 +243,7 @@ Each of these is refused by rule, not by taste — and each is a documented obli
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.3 | 2026-10-21 | Product Design Lead + Ops (scaffold and git-baseline pass) | The version-control premise was corrected for the owner’s 2026-10-21 `git init`: **version control arrived on 2026-10-21; the hash record stays** — `32` §4’s SHA-256 and byte-length register is not replaced by git history, because a commit records content at a point in time while the register asserts a per-file identity that survives any checkout. `git lfs` is still **not performed**. The register state is re-measured unchanged: **93 rows (83 `PLANNED` / 6 `BLOCKED` / 4 `REGISTERED` / 0 `APPROVED`)**, no batch funded, and `OD-COM-12` plus `OD-DOC-30`/`OD-DOC-34` still stand between this document and any produced artwork. **No asset was generated, approved or moved.** | Depends On, header, Revision History |
 | 1.2 | 2026-10-21 | Product Design Lead + Ops (design-engineering structure pass) | Depends On now names the three documents that answer questions this plan used to leave open: **`35`** says where a produced asset file lands and which package consumes it, **`36`** says what may load it under `13` §5.2, and **`37` §7.1** specifies the placeholder slot props each container is built from — which is the mechanism behind the owner’s SVG-or-blank-container direction (`30` §5.3), not a restatement of it. **The plan itself is unchanged**: 93 inventory rows, 83 `PLANNED`, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`**, no batch funded, and `OD-COM-12` (design-asset IP) and `OD-DOC-30`/`OD-DOC-34` still stand between this document and any produced artwork. No asset was generated. | Depends On, Revision History, header |
 | 1.1 | 2026-10-21 | Product Design Lead + Engineering Lead (palette, storage and prompt-pack pass) | §1 now names `34` as the single home for generation wording (`DEC-01`). §7 gained the **measured production-route split** from the same register — 24 generatable raster / 68 vector-or-authored / 1 real-capture, of which 18 are promptable today and 6 are blocked behind `OD-DOC-27`/`28`/`33` — stated as arithmetic rather than preference, and the owner's **placeholder-first** direction recorded with its consequence: `30` §5.3 containers are the current route for all 24 generatable rows, and no raster batch runs until `OD-DOC-34` closes, because artwork with nowhere lawful to be served from is wasted spend. §9 gained `OD-DOC-34` (`[BLOCKER]`), `OD-DOC-35`, `OD-DOC-36` and `OD-DOC-37`; batches 6 and 7 carry `OD-DOC-34` in their Gate cell. **No batch, owner, cost boundary, count or prohibition in §2–§6 and §8 was changed.** | §1, §7, §9, header, Revision History |
 | 1.0 | 2026-10-21 | Product Design Lead + Engineering Lead (documentation pass) | First issue. 93-row inventory generated from documented demand only, every row citing a `doc_ref`; asset classes bound to the `12` §9 weight budget and the `13` §5.2 `img-src 'self'` / `16` §5.2 static-bundle serving rule; the brief's nine appliance categories mapped against `06` §4/§4.7 with six shown to be absent from the requirement set; commercial boundary drawn from `26` §3.1/§3.2/§4.1 (UI approval triggers the second instalment); `source-code/` deliberately not created because `14` §2 fixes the layout and `OD-14-01/03/04` are open; `03-customer-app/onboarding`, `06-partner-dashboard` and `07-motion` reserved with reasons. | All |
