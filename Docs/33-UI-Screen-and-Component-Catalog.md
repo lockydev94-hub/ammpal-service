@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-33 |
-| Version | 1.2 |
+| Version | 1.3 |
 | Status | **PROPOSED — not approved.** Every screen below is `UNDESIGNED`; no wireframe or build exists. |
 | Owner | Product Design Lead + Frontend Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `12` (canonical screens), `03`, `04`, `06`, `07`, `10`, `23`, `30`, `31`, `32`, `34`, `35` (which directory each screen's code lives in), `36` (what it may be built from), `37` (the contract each named component must satisfy) |
 
 ---
@@ -66,19 +66,24 @@ makes.
 
 | ID | Page | States | Assets (from `31`) | Workflow / data | Design status |
 |---|---|---|---|---|---|
-| SCR-WEB-01 | Home | L, F | `AMM-WEB-HERO-HOMEPAGE-1600`, `AMM-SERVICE-*-ICON-24`, `AMM-BRAND-LOGO-HORIZONTAL` | search entry, city picker, category rail — `12` §2.1; `06` §2 catalogue | UNDESIGNED |
-| SCR-WEB-02 | Category listing | L, E, S | `AMM-SERVICE-*-ICON-24`; `AMM-SERVICE-*-CATEGORY-800` **BLOCKED** | `06` §2; availability badge needs ≥ 1 technician | UNDESIGNED |
+| SCR-WEB-01 | Home | L, F | `AMM-WEB-HERO-HOMEPAGE-1600`, `AMM-SERVICE-*-ICON-24`, `AMM-BRAND-LOGO-HORIZONTAL` **+ the eight sections' artwork of `39` §3**: 5 × `AMM-WEB-ILLU-*-REPAIR-800`, 3 × `AMM-WEB-ILLU-STEP-*-800`, `AMM-WEB-ILLU-PRICING-TRANSPARENT-800`, `AMM-WEB-ILLU-TRUST-VERIFIED-800`, `AMM-WEB-ILLU-SERVICEABILITY-800`, `AMM-WEB-ILLU-SUPPORT-HELPLINE-800`, `AMM-BRAND-PATTERN-BACKGROUND` (offer strip at 6 %) | search entry, city picker, category rail — `12` §2.1; `06` §2 catalogue; section order and slot sizes — `39` §3 | UNDESIGNED |
+| SCR-WEB-02 | Category listing | L, E, S | `AMM-SERVICE-*-ICON-24`; the 5 `AMM-WEB-ILLU-*-REPAIR-800` appliance tiles registered 2026-10-22; `AMM-SERVICE-*-CATEGORY-800` **BLOCKED** | `06` §2; availability badge needs ≥ 1 technician | UNDESIGNED |
 | SCR-WEB-03 | Service detail | L, E, S | `AMM-SERVICE-*-CATEGORY-800` **BLOCKED**, `AMM-WEB-ILLU-SERVICEABILITY-800` | variant picker, location-specific price range — `07`, `06` | UNDESIGNED |
 | SCR-WEB-04 | Technician list | L, E | `AMM-WEB-PLACEHOLDER-PARTNER-512` | `01` FR-CAT-05; rating from verified completed bookings only (`13` §5.3) | UNDESIGNED |
 | SCR-WEB-05 | Technician profile | L, E | `AMM-WEB-PLACEHOLDER-PARTNER-512` | review moderation badge — `12` §2.1 | UNDESIGNED |
 | SCR-WEB-06 | Booking flow (7-step stepper) | L, F, A | none | `04` §2 nine-stage lifecycle; `23` §3 transitions; address first | UNDESIGNED |
 | SCR-WEB-07 | Booking detail + tracking | L, F | marker set `AMM-CONTROL-MARKER-*` | `23` §2.3 status, §3 transitions; socket then poll (`12` §3.3) | UNDESIGNED |
-| SCR-WEB-08 | Partner registration (multi-step, resumable) | L, F, A | none | `23` §8 onboarding machine; KYC upload via presigned URL (`10` §11) | UNDESIGNED |
-| SCR-WEB-09 | Support / FAQ / toll-free | L, E | `AMM-WEB-ILLU-SERVICEABILITY-800` | `05` §3 call paths; IVR-08/09 (`05` §3.7) | UNDESIGNED |
+| SCR-WEB-08 | Partner registration (multi-step, resumable) | L, F, A | `AMM-WEB-HERO-PARTNER-1600` (the `/partner` landing above the form) | `23` §8 onboarding machine; KYC upload via presigned URL (`10` §11) | UNDESIGNED |
+| SCR-WEB-09 | Support / FAQ / toll-free | L, E | `AMM-WEB-ILLU-SERVICEABILITY-800`, `AMM-WEB-ILLU-SUPPORT-HELPLINE-800` | `05` §3 call paths; IVR-08/09 (`05` §3.7) | UNDESIGNED |
 
-Legal pages (`/terms`, `/privacy`, `/refund-policy`) and `/offers`, `/pricing`, `/partner` are
-**routes without an approved content source** — `12` §2 lists them, `26` §8 says legal content is not
-covered by this suite. They need copy, not design, and no asset is claimed for them beyond OG images.
+Legal pages (`/terms`, `/privacy`, `/refund-policy`) and `/offers` are **routes without an approved
+content source** — `12` §2 lists them, `26` §8 says legal content is not covered by this suite. They need
+copy, not design, and no asset is claimed for them beyond OG images. `/pricing` and `/partner` moved out
+of that sentence on 2026-10-22, because they now have registered artwork — `AMM-WEB-ILLU-PRICING-TRANSPARENT-800`
+and `AMM-WEB-HERO-PARTNER-1600`. That is an artwork row, **not** an approved page: the copy these two
+routes carry is still the owner's to supply, the price band is a server computation in integer paise
+(`00` FR-01/FR-03), and no earning, payout or partner-count claim may be drawn into either file
+(`26` §4.1, `34` §7).
 
 ---
 
@@ -216,25 +221,27 @@ once the owner accepts it.
 
 | Surface | Screens | Distinct asset IDs required | BLOCKED rows |
 |---|---|---|---|
-| Website | 9 | 12 | 6 category images |
+| Website | 9 | 24 | 6 category images |
 | Customer app | 26 | 9 | 0 |
 | Partner app | 21 | 5 | 0 |
 | Control Center | 12 (+31 nav destinations) | 49 | 0 |
 | Brand / store | — | 12 | 0 |
 | Reference only | — | 4 | 0 |
 
-**Total 93 rows in `design-assets/manifests/asset-inventory.csv`; 6 are `BLOCKED` on a registered
-decision, and 0 are `APPROVED`.** No screen has a completed design, and no asset has been produced, so
-the phase gate in `31` §7 (batches 1–4) is still the whole of the work available to do.
+**Total 105 rows in `design-assets/manifests/asset-inventory.csv`; 6 are `BLOCKED` on a registered
+decision, 18 are `GENERATED`, and 0 are `APPROVED`.** No screen has a completed design and no asset has
+been accepted, so the phase gate in `31` §7 (batches 1–4) is still the whole of the work available to do —
+what changed on 2026-10-22 is that eighteen of those rows now have a file to argue about instead of a
+sentence, and the website column went 12 → 24 with the twelve section-artwork rows of `34` §4.7.
 
-**Read the roll-up by production route as well as by surface** — the same 93 rows split **24 generatable
+**Read the roll-up by production route as well as by surface** — the same 105 rows split **36 generatable
 raster / 68 vector-or-authored / 1 real-capture** (`34` §1, measured from this file's inputs). By `surface`
 column the Control Center holds 49 rows, of which **43 nav icons and 4 map markers are vector-authored**
-and only the empty-state and error-state illustrations belong to the generatable 24; the website's 12
+and only the empty-state and error-state illustrations belong to the generatable 36; the website's 24
 referenced IDs include the 6 `BLOCKED` category images, which cannot be prompted until the launch
-categories close. Under placeholder-first (`30` §5.3) every one of these asset references currently
-resolves in review to an SVG glyph or an empty container, which is why the Assets column is a **schedule
-of work**, not a list of files.
+categories close, and the 12 rows registered for `39` §3's slots, which can. Under placeholder-first
+(`30` §5.3) every one of these asset references currently resolves in review to an SVG glyph or an empty
+container, which is why the Assets column is a **schedule of work**, not a list of files.
 
 ---
 
@@ -242,6 +249,7 @@ of work**, not a list of files.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.3 | 2026-10-22 | Product Design Lead + Frontend Lead (website-design pass) | §3's website rows now name the artwork the `39` §3 slot table reserves: **SCR-WEB-01 Home** lists the eight sections' files (5 appliance tiles, 3 step cards, pricing, trust, serviceability, support, pattern at 6 %), **SCR-WEB-02** the appliance tile family beside its still-`BLOCKED` category images, **SCR-WEB-08** the `/partner` hero and **SCR-WEB-09** the support drawing. The paragraph that dismissed `/pricing` and `/partner` as routes with no asset is corrected: they have registered rows now, which is **artwork, not an approved page** — copy remains the owner's, price stays a server computation in integer paise, and no earning/payout/partner-count claim may be drawn into a file. §6 re-measured from the regenerated CSV: register **93 → 105 rows**, website column **12 → 24** distinct IDs, production route **24 → 36** generatable (68 vector and 1 real-capture unchanged), and the sentence "no asset has been produced" replaced with what is now true — **18 `GENERATED`, 0 `APPROVED`**, so the phase gate still has the work. **Every screen stays `UNDESIGNED`; no status, gate, state list or `BLOCKED` classification was softened.** | §3, §6, Revision History, header |
 | 1.2 | 2026-10-21 | Product Design Lead + QA Lead (design-engineering structure pass) | Depends On gained `35` (which directory a screen’s code lives in), `36` (what it may be built from) and `37` (the contract each component named here must satisfy). **Every one of the 68 screens is still `UNDESIGNED`**, the API and permission columns are still empty on purpose (`OD-10-06`, `OD-DOC-29`), and the eight components §5 records as required-but-unnamed — ServiceCard, BookingSummary, the compact status indicator, EstimateApproval, PaymentSummary, InvoiceView, ErrorState, PermissionDeniedState — are **still not added**, because `12` §6.2 is their only home and `CA-00` forbids coining a name in this document. What `37` changes is that once a name is added, its contract, variant axes and states have a specified form rather than an implied one. | Depends On, Revision History, header |
 | 1.1 | 2026-10-21 | Product Design Lead + Frontend Lead (palette, storage and prompt-pack pass) | §1 gained the rule that **placeholder-first does not change a row's status**: under `30` §5.3 a screen's layout, states and asset slots can be reviewed against empty containers, which is a layout review and not a design approval — `OD-DOC-36` still asks whether a layout-only approval can be the event `26` §4.1 pays on (the same money trigger `19` `R-45` scores), and **all 68 rows stay `UNDESIGNED`**. §4.2 gained the note that **no `SCR-CC-13` was issued** for the super-admin storage-provider surface the owner asked for: `12` §5.2 names no such screen, `10` §4 has no route and `03` §4 no token, so an ID here would fabricate a requirement (`DEC-03`); registered as `OD-DOC-37` and sequenced after `OD-10-06`. §6 gained the **production-route reading** of the same 93 rows (24 generatable / 68 vector-or-authored / 1 real-capture, `34` §1) with the Control Center's 49 broken down honestly as 43 nav icons + 4 map markers vector-authored and only its empty-state and error-state illustrations generatable. `34` added to Depends On. **No screen row, state legend, asset reference, permission citation or component gap in §2–§5 changed.** | §1, §4.2, §6, header, Revision History |
 | 1.0 | 2026-10-21 | Product Design Lead + Frontend Lead (documentation pass) | First issue. 68 screens indexed by ID against `12` §2.1/§3.2/§4.2/§5.2 without restating it; per-screen required states, asset IDs from `31` and workflow/data citations to `04`/`05`/`06`/`07`/`09`/`23`; API and permission columns left unpopulated with the reason registered (`OD-DOC-29`, extending `OD-10-06`); eight component-state gaps named against `12` §6.2; partner-dashboard IDs not issued because `ADR-021` leaves the surface conditional. | All |

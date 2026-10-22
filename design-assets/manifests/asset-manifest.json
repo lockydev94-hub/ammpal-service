@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_on": "2026-10-21",
+  "generated_on": "2026-10-22",
   "schema_doc": "Docs/32-Asset-Manifest-and-Export-Spec.md",
   "naming_rule": "AMM-[SURFACE]-[ASSET-TYPE]-[SUBJECT]-[SIZE]-v[NN].[EXT]",
   "status_vocabulary": {
@@ -32,7 +32,9 @@
         "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T22:54 only",
         "human_authored": false
       },
-      "used_by": ["internal architecture reference only"],
+      "used_by": [
+        "internal architecture reference only"
+      ],
       "alt_text": null,
       "dependencies": [],
       "notes": "Dominant colours measured as #FFFFFF / #E6F5FE / #F0F9FE - a pale infographic render, not evidence of a brand palette. At 1.88 MB it cannot meet the 12 sec 9 web budget and must not be exported into any product surface while OD-COM-12 (design-asset IP) is open."
@@ -56,7 +58,9 @@
         "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:18 only",
         "human_authored": false
       },
-      "used_by": ["internal call/CCO workflow reference only"],
+      "used_by": [
+        "internal call/CCO workflow reference only"
+      ],
       "alt_text": null,
       "dependencies": [],
       "notes": "Content overlap with Docs/05 sec 3 is not verified; the documents are the source of truth, not this image."
@@ -80,7 +84,9 @@
         "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:08 only",
         "human_authored": false
       },
-      "used_by": ["internal end-to-end booking flow reference only"],
+      "used_by": [
+        "internal end-to-end booking flow reference only"
+      ],
       "alt_text": null,
       "dependencies": [],
       "notes": "Any status label visible in this image is subordinate to the canonical codes in Docs/23 sec 2.3."
@@ -104,10 +110,557 @@
         "creation_date": "NOT RECORDED - filesystem mtime 2026-10-12T23:24 only",
         "human_authored": false
       },
-      "used_by": ["internal pricing/settlement flow reference only"],
+      "used_by": [
+        "internal pricing/settlement flow reference only"
+      ],
       "alt_text": null,
       "dependencies": [],
       "notes": "Money shown here is illustrative. Docs/07 sec 7.6 is the money-flow source of truth and the currency format rule is 12 sec 7 XS-02."
+    },
+    {
+      "asset_id": "AMM-WEB-HERO-HOMEPAGE-1600",
+      "file": "design-assets/02-website/exports/AMM-WEB-HERO-HOMEPAGE-1600-v02.avif",
+      "format": "avif",
+      "width_px": 1600,
+      "height_px": 1000,
+      "bytes": 71455,
+      "sha256_16": "19030d779592d6d9",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v02",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/02-website.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Generate one image. No text, no watermark, no cropping marks.\n\nSTYLE LOCK - AmmPal Service illustration system\nFlat modern vector-style illustration, 2 colours plus one accent, thin even outlines.\nLine colour #2C4551. Fill colour #E9F3F4. Accent colour #0A6E77. Highlight #C9A227 used only\nas one small element and never as text. Background #FFFFFF, perfectly even, no vignette.\nSingle scene, one-point perspective, camera at eye level, generous negative space, subject\noccupies about 60% of the frame and sits centred with at least 8% clear margin on every side.\nWarm neutral domestic and service-trade setting in India: ceiling split air-conditioner, window\nair-conditioner, front-load washing machine, refrigerator, microwave, water purifier under a sink,\nservice toolbox, screwdriver, spirit level, mask and gloves. Clean, calm, competent, unhurried.\nSTRICTLY FORBIDDEN: any text, letters, numbers, logos, watermarks, UI elements, buttons,\nspeech bubbles, price tags, tick marks that form a checkmark inside a box, visible faces,\nidentifiable people, brand names on appliances, photorealistic skin, stock-photo smile staging,\nlens flare, neon, purple or violet, gradient meshes, drop shadows on the illustration,\nisometric 3D \"tech\" art, mascots, confetti, stars bursting, cluttered backgrounds.\n\nSUBJECT\nA wide, calm scene of a technician's open service toolbox in the foreground on a clean floor mat,\na split air-conditioner indoor unit mounted high on a pale wall behind it, a folded ladder and a\nscrewdriver resting nearby, soft daylight from the left, no people at all, the upper right third of\nthe frame left as empty pale space for a headline to be placed over in the interface.\n\nCANVAS: 1536 x 960 pixels, landscape 16:10.\nRENDER RULES\n- Flat 2D illustration only. This is not a photograph and not a 3D render.\n- Use ONLY these colours: #2C4551 outlines, #E9F3F4 fills, #0A6E77 accent, #C9A227 for one small\n  highlight element maximum, #FFFFFF background. No other hue, no purple, no violet, no pink.\n- The upper-right third of the frame must be genuinely empty pale space. Do not fill it with\n  decoration, furniture, plants or light rays.\n- No person, no face, no hand, no silhouette anywhere.\n- No brand name or label on the air-conditioner or any appliance.\n- Plain even white background, no vignette, no gradient, no drop shadow under the objects.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "WEB Home"
+      ],
+      "alt_text": "Technician servicing a home appliance in an Indian home",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/02-website/masters/AMM-WEB-HERO-HOMEPAGE-1600-v02.png, measured 1586x992 at 1345557 bytes; cover-cropped and resampled to the register size 1600x1000 at intake. Sibling exports, same stem: AMM-WEB-HERO-HOMEPAGE-1600-v02.webp 66000 B; AMM-WEB-HERO-HOMEPAGE-1600-v02.jpg 121488 B. Prompt source: maintenance/prompts/02-website.md. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-BRAND-OG-HOMEPAGE",
+      "file": "design-assets/01-brand/exports/AMM-BRAND-OG-HOMEPAGE-v01.avif",
+      "format": "avif",
+      "width_px": 1200,
+      "height_px": 630,
+      "bytes": 15401,
+      "sha256_16": "340a0ef178e2002a",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/01-brand.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration for a wide social preview. Everything in the scene is a\ndrawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nMood: clean, calm, competent, unhurried — a tidy Indian home.\n\nSUBJECT\nOne home-appliance motif at medium scale, placed on the right side of the frame: a split\nair-conditioner indoor unit mounted on a pale wall, seen square-on.\n\nRULES\n- One motif only. Do not populate the frame with other appliances or props.\n- The LEFT 45 percent of the frame is completely empty flat background, reserved for headline copy\n  added later in the interface. Leave it bare: no shape, no shadow, no ornament.\n- The appliance is a plain unlabelled body: no name, no emblem, no badge, no control panel display.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Every shape uses only the five colours named above.\n\nCANVAS: 1216 x 640 pixels, landscape 1.9:1.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "Share preview on WhatsApp (11 sec 3)"
+      ],
+      "alt_text": null,
+      "a11y_treatment": "SOCIAL_META_IMAGE",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/01-brand/masters/AMM-BRAND-OG-HOMEPAGE-v01.png, measured 1729x910 at 1111320 bytes; cover-cropped and resampled to the register size 1200x630 at intake. Sibling exports, same stem: AMM-BRAND-OG-HOMEPAGE-v01.webp 13588 B; AMM-BRAND-OG-HOMEPAGE-v01.jpg 28789 B. Prompt source: maintenance/prompts/01-brand.md. DEVIATION RECORDED: row declares \"png+webp\"; this record points at the AVIF export, with WebP and JPEG beside it (32 sec 4 fallback chain). STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-BRAND-PATTERN-BACKGROUND",
+      "file": "design-assets/01-brand/exports/AMM-BRAND-PATTERN-BACKGROUND-v01.avif",
+      "format": "avif",
+      "width_px": 1600,
+      "height_px": 1600,
+      "bytes": 11551,
+      "sha256_16": "b350699b18f3bb08",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/01-brand.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one seamless repeating pattern tile as a flat vector illustration.\n\nGROUND AND COLOUR\nGround: exactly #F4F8F9, perfectly even across the whole image.\nMotifs: exactly #E9F3F4, only slightly deeper than the ground so they read as a faint texture.\nNothing else appears in the image. No outlines, no shading, no shadows, no gradients, no accent\ncolour, no additional hue.\n\nSUBJECT\nAn even grid of tiny abstract service motifs drawn as plain filled shapes: a wrench head, a water\ndroplet, and a fan blade. The three alternate in a regular, evenly spaced layout.\n\nRULES\n- The tile must repeat seamlessly: whatever touches the left edge continues at the right edge, and\n  whatever touches the top continues at the bottom. Check both seams before returning the image.\n- Motifs are abstract and quiet. They must not read as a usable icon set — no two motifs should be\n  distinguishable as separate named tools at a glance.\n- Keep the motifs small and widely spaced: they occupy a minority of the surface, the ground dominates.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Flat, calm, orderly — a wallpaper texture, not an illustration scene.\n\nCANVAS: 1024 x 1024 pixels, square.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "Web hero",
+        "email",
+        "empty states"
+      ],
+      "alt_text": null,
+      "a11y_treatment": "DECORATIVE_EMPTY_ALT",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/01-brand/masters/AMM-BRAND-PATTERN-BACKGROUND-v01.png, measured 1254x1254 at 1040002 bytes; cover-cropped and resampled to the register size 1600x1600 at intake. Sibling exports, same stem: AMM-BRAND-PATTERN-BACKGROUND-v01.webp 11396 B; AMM-BRAND-PATTERN-BACKGROUND-v01.jpg 26179 B. Prompt source: maintenance/prompts/01-brand.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CONTROL-DENIED-600",
+      "file": "design-assets/05-control-center/exports/AMM-CONTROL-DENIED-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 3491,
+      "sha256_16": "5d8e5ee2ed4c9e7c",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/05-control-center.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nAn empty flat shelf with nothing standing on it, shown square-on and quiet.\n\nRULES\n- One object: the shelf board with its two side panels. Nothing else in the frame and nothing on it.\n- The scene means \"there is nothing here\". Draw it as plain absence, evenly lit and unhurried.\n- Simple open joinery: plain boards, plain sides, no hardware of any kind on the front face.\n- The image is entirely text-free: no letters, no digits, no symbols, no labels.\n- Every shape uses only the five colours named above, so nothing in the picture can be red.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "Any scope-denied CC screen"
+      ],
+      "alt_text": "You do not have access to this data",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/05-control-center/masters/AMM-CONTROL-DENIED-600-v01.png, measured 1448x1086 at 1010327 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CONTROL-DENIED-600-v01.webp 2552 B; AMM-CONTROL-DENIED-600-v01.jpg 8826 B. Prompt source: maintenance/prompts/05-control-center.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CONTROL-EMPTY-TABLE-480",
+      "file": "design-assets/05-control-center/exports/AMM-CONTROL-EMPTY-TABLE-480-v01.avif",
+      "format": "avif",
+      "width_px": 480,
+      "height_px": 360,
+      "bytes": 2436,
+      "sha256_16": "49f70f8d78b0c12d",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/05-control-center.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA single upright sheet of plain paper marked with empty horizontal rule lines and nothing written\nin them.\n\nRULES\n- One object, centred. Nothing else in the frame.\n- The rules are blank lines only — evenly spaced, uniform, with nothing sitting on them.\n- The image is entirely text-free: no letters, no digits, no symbols, no pseudo-writing.\n- The sheet is flat and whole: no curl, no tear, no corner folded down.\n- Every shape uses only the five colours named above.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "All CC DataTables (12 sec 6.2)"
+      ],
+      "alt_text": "No records match this filter",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/05-control-center/masters/AMM-CONTROL-EMPTY-TABLE-480-v01.png, measured 1448x1086 at 1077879 bytes; cover-cropped and resampled to the register size 480x360 at intake. Sibling exports, same stem: AMM-CONTROL-EMPTY-TABLE-480-v01.webp 1718 B; AMM-CONTROL-EMPTY-TABLE-480-v01.jpg 8936 B. Prompt source: maintenance/prompts/05-control-center.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-EMPTY-BOOKINGS-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-EMPTY-BOOKINGS-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 8200,
+      "sha256_16": "283554be0c9ca9a8",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA closed diary with a plain ribbon lying flat on a pale surface, viewed from a little above.\n\nRULES\n- Exactly one object, centred. Nothing else in the frame.\n- The image is entirely text-free: no letters, no digits, no symbols, no marks that suggest writing.\n- Nothing on the cover but the ribbon.\n- The diary is closed, neat and undamaged — this is an empty state, not something broken or missed.\n- No motion lines, no glow, no badge, no checkmark, no sparkle.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-14 booking list (all tabs)"
+      ],
+      "alt_text": "no bookings yet",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-EMPTY-BOOKINGS-600-v01.png, measured 1448x1086 at 1166254 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CUSTOMER-EMPTY-BOOKINGS-600-v01.webp 7790 B; AMM-CUSTOMER-EMPTY-BOOKINGS-600-v01.jpg 11885 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 11228,
+      "sha256_16": "0f000bcec0db0f23",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA hand bell resting on its side on a pale surface, completely still.\n\nRULES\n- Exactly one object, centred. Nothing else in the frame.\n- The bell is at rest on its side: no arcs, no rings, no lines suggesting sound.\n- No counter, no dot, no badge attached to it.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- The bell is whole, polished and tidy — quiet, never sad or broken.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-23 notifications"
+      ],
+      "alt_text": "no notifications",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600-v01.png, measured 1448x1086 at 1180891 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600-v01.webp 10736 B; AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600-v01.jpg 11813 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-EMPTY-SLOTS-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-EMPTY-SLOTS-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 9108,
+      "sha256_16": "c0175bad594e0b9c",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA blank wall calendar holder with a single empty card slid into its rings.\n\nRULES\n- Exactly one object, centred. Nothing else in the frame.\n- The card is completely blank: no grid, no squares, no dates, no digits, no dots marking days.\n- No clock anywhere in the image.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- The holder is neat and upright, simply empty.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-09 slot picker"
+      ],
+      "alt_text": "no slots available",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-EMPTY-SLOTS-600-v01.png, measured 1448x1086 at 1161107 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CUSTOMER-EMPTY-SLOTS-600-v01.webp 9620 B; AMM-CUSTOMER-EMPTY-SLOTS-600-v01.jpg 11947 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-EMPTY-SUPPORT-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-EMPTY-SUPPORT-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 11988,
+      "sha256_16": "657e41b7167bdda0",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA desk headset resting on a table beside a closed notebook, both neatly placed.\n\nRULES\n- Two objects only: the headset and the closed notebook. Nothing else in the frame.\n- No screen, no monitor, no keyboard, no telephone.\n- The notebook is closed and its pages are not visible.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Tidy and ready, not abandoned.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-24 support"
+      ],
+      "alt_text": "no tickets",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-EMPTY-SUPPORT-600-v01.png, measured 1448x1086 at 1231792 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CUSTOMER-EMPTY-SUPPORT-600-v01.webp 11848 B; AMM-CUSTOMER-EMPTY-SUPPORT-600-v01.jpg 12064 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-EMPTY-TECHNICIANS-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-EMPTY-TECHNICIANS-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 450,
+      "bytes": 8547,
+      "sha256_16": "f0cee70c8d700109",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA service apron hanging neatly on a single wall hook, empty.\n\nRULES\n- One object on one hook, centred. Nothing else in the frame.\n- The apron hangs flat and unworn: no sleeves filled out, no shape inside it.\n- No tag, no patch, no emblem and no lettering on the fabric.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Tidy and ready — the trade is present, the list simply has no entries today.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-07 technician list"
+      ],
+      "alt_text": "no technicians available",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-EMPTY-TECHNICIANS-600-v01.png, measured 1448x1086 at 1165372 bytes; cover-cropped and resampled to the register size 600x450 at intake. Sibling exports, same stem: AMM-CUSTOMER-EMPTY-TECHNICIANS-600-v01.webp 8036 B; AMM-CUSTOMER-EMPTY-TECHNICIANS-600-v01.jpg 11960 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-CUSTOMER-SUCCESS-BOOKING-600",
+      "file": "design-assets/03-customer-app/exports/AMM-CUSTOMER-SUCCESS-BOOKING-600-v01.avif",
+      "format": "avif",
+      "width_px": 600,
+      "height_px": 600,
+      "bytes": 11445,
+      "sha256_16": "1ac801a930bded7f",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/03-customer-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA neatly closed diary with a plain ribbon and one small sealed envelope resting beside it.\n\nRULES\n- Two objects only: the diary and the envelope. Nothing else in the frame.\n- The envelope is blank and sealed. No stamp, no seal emblem, no writing on it.\n- No checkmark, no tick, no seal, no badge, no ribbon award.\n- No celebration graphics: no stars, sparks, confetti, fireworks or flying streamers.\n- The image is entirely text-free: no letters, no digits, no symbols.\n\nCANVAS: 1024 x 1024 pixels, square.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "CUS-13 booking confirmation",
+        "CUS-20 payment success"
+      ],
+      "alt_text": "Booking confirmed",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/03-customer-app/masters/AMM-CUSTOMER-SUCCESS-BOOKING-600-v01.png, measured 1254x1254 at 1195643 bytes; cover-cropped and resampled to the register size 600x600 at intake. Sibling exports, same stem: AMM-CUSTOMER-SUCCESS-BOOKING-600-v01.webp 11268 B; AMM-CUSTOMER-SUCCESS-BOOKING-600-v01.jpg 12109 B. Prompt source: maintenance/prompts/03-customer-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-PARTNER-EMPTY-CALENDAR-480",
+      "file": "design-assets/04-partner-app/exports/AMM-PARTNER-EMPTY-CALENDAR-480-v01.avif",
+      "format": "avif",
+      "width_px": 480,
+      "height_px": 360,
+      "bytes": 6848,
+      "sha256_16": "1e8ea81429aeddcf",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/04-partner-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA small desk planner stand holding one completely blank card.\n\nRULES\n- One object: the stand with its blank card. Nothing else in the frame.\n- The card is empty: no grid, no numbered squares, no week marks, no dots, no faint ruling.\n- No clock anywhere in the image.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Bold simple shapes — legible at 48 pixels wide.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "PAR-16 calendar"
+      ],
+      "alt_text": "no scheduled jobs",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/04-partner-app/masters/AMM-PARTNER-EMPTY-CALENDAR-480-v01.png, measured 1448x1086 at 1150473 bytes; cover-cropped and resampled to the register size 480x360 at intake. Sibling exports, same stem: AMM-PARTNER-EMPTY-CALENDAR-480-v01.webp 7168 B; AMM-PARTNER-EMPTY-CALENDAR-480-v01.jpg 10884 B. Prompt source: maintenance/prompts/04-partner-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-PARTNER-EMPTY-EARNINGS-480",
+      "file": "design-assets/04-partner-app/exports/AMM-PARTNER-EMPTY-EARNINGS-480-v01.avif",
+      "format": "avif",
+      "width_px": 480,
+      "height_px": 360,
+      "bytes": 5976,
+      "sha256_16": "35b1b71884482745",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/04-partner-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA plain folded paper envelope with a blank paper band wrapped around it, standing closed.\n\nRULES\n- Exactly one object, centred. Nothing else in the frame.\n- The object is plain paper only. It carries no printing, no emblem, no band label.\n- No coins, no notes, no cash, no stacked currency of any kind.\n- The image is entirely text-free: no letters, no digits, no symbols, no signs.\n- Bold simple shapes — legible at 48 pixels wide, so no thin detail.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "PAR-12 earnings",
+        "PAR-13 earnings detail"
+      ],
+      "alt_text": "no earnings yet",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/04-partner-app/masters/AMM-PARTNER-EMPTY-EARNINGS-480-v01.png, measured 1448x1086 at 1145754 bytes; cover-cropped and resampled to the register size 480x360 at intake. Sibling exports, same stem: AMM-PARTNER-EMPTY-EARNINGS-480-v01.webp 5554 B; AMM-PARTNER-EMPTY-EARNINGS-480-v01.jpg 9600 B. Prompt source: maintenance/prompts/04-partner-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-PARTNER-EMPTY-JOBS-480",
+      "file": "design-assets/04-partner-app/exports/AMM-PARTNER-EMPTY-JOBS-480-v01.avif",
+      "format": "avif",
+      "width_px": 480,
+      "height_px": 360,
+      "bytes": 6877,
+      "sha256_16": "4dcb0d6896cdfe44",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/04-partner-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA folded job card lying on a pale surface with a pen resting across it. Seen from the side.\n\nRULES\n- Two objects only: the folded card and the pen. Nothing else in the frame.\n- The card faces are blank and folded shut. No lines, no squares, no ruled marks on them.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Bold simple shapes — this must stay legible when drawn 48 pixels wide, so no thin detail.\n- Neat and ready, not discarded.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "PAR-03 job feed"
+      ],
+      "alt_text": "no offers right now",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/04-partner-app/masters/AMM-PARTNER-EMPTY-JOBS-480-v01.png, measured 1448x1086 at 1156050 bytes; cover-cropped and resampled to the register size 480x360 at intake. Sibling exports, same stem: AMM-PARTNER-EMPTY-JOBS-480-v01.webp 6768 B; AMM-PARTNER-EMPTY-JOBS-480-v01.jpg 10259 B. Prompt source: maintenance/prompts/04-partner-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-PARTNER-EMPTY-SETTLEMENT-480",
+      "file": "design-assets/04-partner-app/exports/AMM-PARTNER-EMPTY-SETTLEMENT-480-v01.avif",
+      "format": "avif",
+      "width_px": 480,
+      "height_px": 360,
+      "bytes": 6621,
+      "sha256_16": "637022b3d695d0d1",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/04-partner-app.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nTwo blank paper slips stacked squarely and tied with a single paper band.\n\nRULES\n- One object group: the two slips and their band. Nothing else in the frame.\n- Both slips are completely blank on every visible face: no ruled lines, no boxes, no totals row.\n- No stamp, no signature scribble, no receipt edge, no barcode.\n- The image is entirely text-free: no letters, no digits, no symbols, no signs.\n- Bold simple shapes — legible at 48 pixels wide.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "PAR-14 settlement statement"
+      ],
+      "alt_text": "no statements yet",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/04-partner-app/masters/AMM-PARTNER-EMPTY-SETTLEMENT-480-v01.png, measured 1448x1086 at 1197006 bytes; cover-cropped and resampled to the register size 480x360 at intake. Sibling exports, same stem: AMM-PARTNER-EMPTY-SETTLEMENT-480-v01.webp 6790 B; AMM-PARTNER-EMPTY-SETTLEMENT-480-v01.jpg 11253 B. Prompt source: maintenance/prompts/04-partner-app.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-STORE-PLAY-FEATURE-1024",
+      "file": "design-assets/08-store/exports/AMM-STORE-PLAY-FEATURE-1024-v01.png",
+      "format": "png",
+      "width_px": 1024,
+      "height_px": 500,
+      "bytes": 346615,
+      "sha256_16": "6f0693d16faa64cd",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/08-store.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration for a very wide banner. Everything in the scene is a drawn\nshape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nMood: clean, calm, competent, unhurried — a tidy Indian home.\n\nSUBJECT\nA quiet wide band. On the left side, an open service toolbox resting on a floor mat with a split\nair-conditioner unit mounted on the pale wall above it. The rest of the width is empty pale space.\n\nRULES\n- AT MOST THREE objects: toolbox, air-conditioner unit, floor. Keep them in the left third.\n- The right two-thirds of the frame is completely empty flat background for store copy handled by\n  Google Play's own text layer. Leave it bare: no shape, no shadow, no ornament, no light rays.\n- The appliances are plain unlabelled bodies: no name, no emblem, no badge.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- No phone, no tablet, no app window, no screen of any kind in the scene.\n- Every shape uses only the five colours named above.\n\nCANVAS: 1024 x 512 pixels, landscape 2:1.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "Play Store listing"
+      ],
+      "alt_text": null,
+      "a11y_treatment": "SOCIAL_META_IMAGE",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/08-store/masters/AMM-STORE-PLAY-FEATURE-1024-v01.png, measured 1774x887 at 1155778 bytes; cover-cropped and resampled to the register size 1024x500 at intake. Sibling exports, same stem: AMM-STORE-PLAY-FEATURE-1024-v01.avif 16479 B; AMM-STORE-PLAY-FEATURE-1024-v01.webp 16004 B; AMM-STORE-PLAY-FEATURE-1024-v01.jpg 29731 B; AMM-STORE-PLAY-FEATURE-1024-v01.png 346615 B. Prompt source: maintenance/prompts/08-store.md. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-WEB-ILLU-SERVICEABILITY-800",
+      "file": "design-assets/02-website/exports/AMM-WEB-ILLU-SERVICEABILITY-800-v01.avif",
+      "format": "avif",
+      "width_px": 800,
+      "height_px": 600,
+      "bytes": 11810,
+      "sha256_16": "5ff1d1e4db7bea46",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/02-website.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration. Everything in the scene is a drawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nEye-level view, generous negative space, subject about 60% of the frame, centred,\nat least 8% clear margin on every side.\nMood: clean, calm, competent, unhurried.\n\nSUBJECT\nA simple house drawn on a pale abstract map-like ground, with one soft empty circle drawn around it.\n\nRULES\n- The ground is a synthetic abstract surface: a few broad pale shapes suggesting a map, nothing that\n  could be read as a real coastline, road grid, river or city outline.\n- No map pin, no marker, no crosshair, no street name, no house number, no address plate.\n- The circle around the house is soft, thin and empty — it means \"no coverage here\", not a target.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Every shape uses only the five colours named above.\n\nCANVAS: 1024 x 768 pixels, landscape 4:3.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "WEB /services (no coverage)",
+        "CUS-03 location picker"
+      ],
+      "alt_text": "No technicians available in this area yet",
+      "a11y_treatment": "ALT_REQUIRED",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/02-website/masters/AMM-WEB-ILLU-SERVICEABILITY-800-v01.png, measured 1448x1086 at 1188636 bytes; cover-cropped and resampled to the register size 800x600 at intake. Sibling exports, same stem: AMM-WEB-ILLU-SERVICEABILITY-800-v01.webp 12138 B; AMM-WEB-ILLU-SERVICEABILITY-800-v01.jpg 15009 B. Prompt source: maintenance/prompts/02-website.md. DEVIATION RECORDED: the inventory row declares format \"svg\" and a 12 KB illustration ceiling (32 sec 4); the raster export meets that byte figure but is not vector. The traced SVG is still owed before this ships in a build. STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
+    },
+    {
+      "asset_id": "AMM-WEB-OG-PARTNER-1200",
+      "file": "design-assets/02-website/exports/AMM-WEB-OG-PARTNER-1200-v01.avif",
+      "format": "avif",
+      "width_px": 1200,
+      "height_px": 630,
+      "bytes": 37754,
+      "sha256_16": "4f7df77a5f0fa851",
+      "status": "GENERATED",
+      "approval_status": "NOT_APPROVED",
+      "version": "v01",
+      "supersedes": null,
+      "source": "AI-generated (ChatGPT) from Docs/34 sec 4 via maintenance/prompts/02-website.md",
+      "provenance": {
+        "tool": "ChatGPT (model name not reported by the tool)",
+        "prompt": "Make one flat vector-style illustration for a wide social preview. Everything in the scene is a\ndrawn shape on a plain ground.\n\nSTYLE — AmmPal Service illustration system\nTwo flat fill colours plus one accent, thin even outlines, no shading.\nOutline #2C4551. Fill #E9F3F4. Accent #0A6E77. At most one small #C9A227 detail.\nBackground exactly #FFFFFF, perfectly even — no vignette, no gradient, no drop shadow.\nMood: clean, calm, competent, unhurried — a tidy service trade.\n\nSUBJECT\nThe open rear compartment of a plain service vehicle, with two neat tool cases and one rolled work\ncloth standing inside it. Viewed from a three-quarter rear angle.\n\nRULES\n- AT MOST FOUR objects: the vehicle rear, two tool cases, one rolled cloth. The style block is\n  vocabulary, not a checklist.\n- The vehicle is unmarked sheet metal: no name, no emblem, no decal, no livery stripe.\n- The rear panel and bumper are blank smooth surfaces — nothing printed or mounted there.\n- The LEFT 45 percent of the frame is completely empty flat background, reserved for headline copy\n  added later in the interface. Leave it bare.\n- The image is entirely text-free: no letters, no digits, no symbols.\n- Every shape uses only the five colours named above.\n\nCANVAS: 1216 x 640 pixels, landscape 1.9:1.",
+        "licence": "UNKNOWN - OD-COM-12 (design-asset IP) open; not claimable as brand-owned",
+        "creation_date": "2026-10-22",
+        "human_authored": false
+      },
+      "used_by": [
+        "WEB /partner"
+      ],
+      "alt_text": null,
+      "a11y_treatment": "SOCIAL_META_IMAGE",
+      "dependencies": [
+        "30 sec 3.2-3.4 measured tokens (#0A6E77, #E9F3F4, #2C4551, #C9A227)"
+      ],
+      "notes": "Generated master: design-assets/02-website/masters/AMM-WEB-OG-PARTNER-1200-v01.png, measured 1729x910 at 1332248 bytes; cover-cropped and resampled to the register size 1200x630 at intake. Sibling exports, same stem: AMM-WEB-OG-PARTNER-1200-v01.webp 36880 B; AMM-WEB-OG-PARTNER-1200-v01.jpg 61068 B. Prompt source: maintenance/prompts/02-website.md. DEVIATION RECORDED: row declares \"png+webp\"; this record points at the AVIF export, with WebP and JPEG beside it (32 sec 4 fallback chain). STILL NOT APPROVED: only the owner's dated record moves GENERATED to APPROVED (32 sec 6, DEC-03), and OD-COM-12 leaves the licence position undocumented."
     }
   ]
 }

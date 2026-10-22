@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-12 |
-| Version | 1.4 |
+| Version | 1.6 |
 | Status | Approved for Design & Development |
 | Owner | Product Design Lead + Frontend Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `01`, `04`, `06`, `10` |
 
 ---
@@ -79,6 +79,13 @@
 > **No screen in §2–§5 is joined to an endpoint or a permission token, because no such mapping exists anywhere in this suite.** `10` §4 lists 117 route rows and `03` §4 declares 92 permission tokens; nothing connects them to each other (`OD-10-06`, `[BLOCKER]`) or to the screens here (`OD-DOC-29`). `33` indexes these screens by `SCR-*` ID and leaves its API and permission columns empty **on purpose** — a permission-denied state cannot be drawn against a mapping that has not been published.
 
 ### 2.1 Website Pages — Detail
+
+> **The Key Elements column below is the page list, not the layout.** Which sections a page renders, in
+> what order, and what image box each section reserves is `39` §2/§3 — a document derived *from* this
+> table, which adds no route and removes none (`35` PS-06 keeps the route list's only home here). Where
+> the two disagree: this column wins on **what a page must contain**, `39` wins on **how those contents are
+> arranged and sized**. Nothing in `39` changes a row below, including the `OD-DOC-25` tile/icon
+> annotation, which stays unresolved.
 
 | Page | Key Elements | Notes |
 |---|---|---|
@@ -310,11 +317,20 @@ Administration
 
 | Category | Components |
 |---|---|
-| **Foundation** | Button (primary/secondary/ghost/danger, loading), IconButton, Input, Select, DatePicker, TimePicker, Checkbox, Radio, Switch, Slider, Stepper, Chip, Tag/Badge, Avatar, Tooltip, Toast, Snackbar |
+| **Foundation** | Button (primary/secondary/ghost/danger, loading), IconButton, Input, Select, DatePicker, TimePicker, Checkbox, Radio, Switch, Slider, Stepper, Chip, Tag/Badge, Avatar, Tooltip, Toast, Snackbar, **Field** (label + hint + error wrapper that owns `aria-describedby`), **Icon** (the one place a glyph is drawn, so size and stroke come from `30` §5's scale), **ImageSlot** (`30` §5.3's reserved container, `37` §7.1's five props) |
 | **Navigation** | BottomNav, TabBar, Sidebar, Breadcrumb, AppBar, Drawer, Stepper header, Deep-link router |
 | **Data display** | DataTable (sort/filter/paginate/export), Card, ListTile, Accordion, Timeline, StatCard, ProgressBar, Rating, PriceBreakdown, EmptyState, Skeleton |
 | **Domain** | BookingStatusTimeline, TechnicianCard, PriceBreakdownSheet, CouponField, MapPicker, LocationSearch, SlotGrid, OTPInput, ChecklistBuilder, PartEntry, EvidenceUploader, EarningBreakdown, SettlementTable, CallPanel, TicketDrawer, ScopeBadge |
 | **Feedback** | ConfirmDialog, Sheet, Snackbar, ProgressOverlay, OfflineBanner, SyncIndicator |
+
+> **Three rows were added on 2026-10-22, and the addition is the point of `CA-00`.** `Field`, `Icon` and
+> `ImageSlot` are the first component names this repository ever *built* (`packages/ui`, `apps/web`) while
+> having no row here: `37` §4 and §7.1 described how all three must behave, `30` §5.3 described the slot's
+> reserved state, and none of them may add a name. Code was therefore ahead of the canonical list by three
+> components, which is the failure mode `CA-00` exists to catch rather than a decision anyone made. The rows
+> **name** the components only — the values stay in `30`, the state matrix in `33` §5, the build contract in
+> `37`. `33` §5's eight unnamed components in the note above are still unnamed there, and `33` §5's matrix
+> still owes these three their state columns.
 
 ### 6.3 Accessibility
 
@@ -407,6 +423,8 @@ Administration
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.6 | 2026-10-22 | Product Design Lead + Frontend Lead (first components built) | **Three names added to §6.2, and only here (`CA-00`)**: `Field`, `Icon` and `ImageSlot` join the Foundation row. They are the components `packages/ui` and `apps/web` now implement and the only three this repository has ever *built* without a row in the canonical list — `37` §4/§7.1 and `30` §5.3 describe their behaviour but may not name them, so code had moved ahead of the list and the list is where it belongs. A note under the table records exactly that, keeps the parenthetical to a *definition* (values stay in `30`, states in `33` §5, contract in `37`), and states plainly that `33` §5 still owes all three their state columns and its own eight unnamed components remain unnamed. **No screen, route, page element, rule, token or ID changed**: §1–§5, §6.1, §6.3, §7–§10, §2.1's `OD-DOC-25` annotation and 1.5's §2.1 lead-in are untouched, and the `33` §5 gap count is unchanged at eight. | §6.2, Revision History, header |
+| 1.5 | 2026-10-22 | Product Design Lead (website-design pass) | **One annotation added, no page, route, element or screen changed.** §2.1 gained a lead-in stating the boundary the website-design pass created: the Key Elements column is *what a page must contain*, while the section breakdown and the image boxes are `39` §2/§3 — derived from this table, adding no route and removing none (`35` PS-06 keeps the route list's home here). `OD-DOC-25`'s tile-versus-icon ambiguity in the Home row is **left unresolved on purpose**; `39` §2.1-H3 answers it for the marketing surface only and says so, and the catalogue pages keep the question open. §2's existing `OD-10-06`/`OD-DOC-29` note about screens having no endpoint or permission join stands untouched. | §2.1 lead-in, Revision History, header |
 | 1.4 | 2026-10-21 | Product Design Lead + Engineering Lead (design-engineering structure pass) | Three pointers added, no content re-listed. §6’s lead now states the four-way split of jobs explicitly — this document **names**, `30` holds values, `33` §5 holds the screen×state matrix, `37` holds the component contract and review checklist, `36` holds the admitted libraries (`DEC-01`). §6.2’s blockquote gained **`CA-00` restated in this document’s own words**: a component is added by a row **here** and nowhere else, so a name coined in `33`, `34`, `36` or `37` is an inconsistency rather than a design decision. §9’s budget table gained the sentence it lacked — these are **budgets, not measurements**, nothing has been built, and `32` §4’s byte ceilings are derived from them rather than measured against them — plus the rule that a library which cannot fit a budget here or pass `13` §5.2’s CSP is not a candidate (`LB-02`, `LB-03`). **No screen, component, route or rule was added, removed or renamed** in §1–§5, §6.2 or §10, and the eight components `33` §5 records as unnamed here are still unnamed here. | §6, §6.2, §9, Revision History, header |
 | 1.3 | 2026-10-21 | Product Design Lead (palette and i18n pass) | Annotated, **not rewritten** — no value in §6.1's token table, §8's coverage table or any rule below it was changed. §6's blockquote now records that the owner chose Deep Teal + Gold as a *direction* on 2026-10-21 and that a direction is an input to `OD-DOC-30`, not its output, so `12` and `30` remain on file as the two sides of the conflict (`DEC-07`). §6.1's Colour cell carries the corrected hexes (`30` §3.2's `#0A6E77` action, `30` §3.4's gold detail) and states that `#20A675` is decoration-only per `30` §3.5; its Typography cell carries the owner's English-first direction and points at `OD-DOC-35`. §8 gained an `[OPEN]` note under i18n-01…04 saying which half of the deferral is a plan (translation production, until `17` names a phase and `29` §4 gains a check) and which half is not (the 30 % expansion tolerance is a layout rule from the first English screen, and `US-07` needs the subset Indic face of `OD-DOC-32` to *render* Odia). | §6, §6.1, §8, header, Revision History |
 | 1.2 | 2026-10-21 | Product Design Lead + Engineering Lead (design-system pass) | Annotated, not rewritten. §6 now names `30` as the home of token **values** and `33` §5 as the component state matrix, with the §6.1 colour row and typography row carrying `[OPEN]` markers for `OD-DOC-30` (blue/orange versus the measured teal/green), `OD-DOC-31` (no documented dark-mode position) and `OD-DOC-32` (`font-src 'self'` against fonts whose loading nobody owns). §1's partner-dashboard note records that no `SCR-PD-*` ID and no asset was produced for a conditional surface. Nothing in §2–§5 or §6.2 was re-listed, and no screen, component or rule was removed. Three further annotations from the same pass: §2 gains the statement that **no screen here is joined to an endpoint or a permission token, because no such mapping exists** (`OD-10-06`, extended as `OD-DOC-29`, which is why `33` leaves those columns empty deliberately); §2.1's Home row and §3.2 screen 4 now carry `OD-DOC-25`, because this document asks for "**Icons, names (localised)**" on screen 4 and "**category tiles**" on Home while the design brief asks for a photograph per category — the question is unanswered twice inside one document. | §1, §2, §2.1, §3.2, §6, §6.1, §6.2, Revision History |

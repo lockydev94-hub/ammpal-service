@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-27 |
-| Version | 1.9 |
+| Version | 1.10 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | All documents |
 
 ---
@@ -59,9 +59,10 @@ exists — source code, a migration, a CI configuration, a deployed manifest —
 repository, **no document may carry that tag**. Do not tell a user that a feature "is already built",
 "is working", or "has been tested" unless you have opened the artifact yourself in this session.
 
-**The same discipline applies to a green check.** The eight scripts in `maintenance/scripts/` take
-**relative paths resolved against the working directory**, so five of them (`validate_docs.py`,
-`lint_mermaid.py`, `validate_assets.py`, `gen_asset_inventory.py`, `palette_probe.py`) must run **from the
+**The same discipline applies to a green check.** The ten scripts in `maintenance/scripts/` take
+**relative paths resolved against the working directory**, so seven of them (`validate_docs.py`,
+`lint_mermaid.py`, `validate_assets.py`, `gen_asset_inventory.py`, `palette_probe.py`, `intake_asset.py`,
+`record_assets.py`) must run **from the
 workspace root**, and `count_rows.py` must be **given the register path**
 (`python3 maintenance/scripts/count_rows.py Docs/21-Open-Decisions-and-Questions.md`) or be run from
 `Docs/` with a matching relative hop — its default is a bare filename with no directory component. Run
@@ -69,7 +70,7 @@ workspace root**, and `count_rows.py` must be **given the register path**
 `Docs/` and its `Docs/*.md` glob matches nothing: it reports zero files, zero broken links, zero
 mismatches and exits `0`. That is a broken invocation, not a pass. **It prints no file count**, so the
 green report alone will not reveal the empty scan — confirm the glob first (`python3 -c "import glob;
-print(len(glob.glob('Docs/*.md')))"` prints **40**, `00`–`38` plus the README), or read the
+print(len(glob.glob('Docs/*.md')))"` prints **41**, `00`–`39` plus the README), or read the
 `MERMAID BLOCKS` line, which `lint_mermaid.py` prints as a quantity and which must not be `0`. Full
 table and the known-good command sequence: `README` §12.5.
 
@@ -137,11 +138,15 @@ Do not skip steps. Each document assumes the previous ones.
 | 33 | `36-Design-Engineering-Toolchain-and-Library-Baseline` | Which library may fill which capability, filtered through `13` §5.2's CSP and `12` §9's budgets. No version is pinned and no cost is asserted here, and you may not add a dependency that is not in this table without an entry in `21` | 12 min |
 | 34 | `37-Component-Architecture-and-Design-Consistency-Rules` | The component contract, the variant API, how colour/motion/effects are expressed in code, and §11's review checklist. **Never add a component name here** — `12` §6.2 is the only home (`CA-00`) | 15 min |
 | 35 | `38-Platform-Mode-and-Data-Lifecycle-Guard` | **Read this before writing anything that removes data** — a `DELETE`, a soft delete, a retention purge, a migration that drops a column, a seed or a fixture. The mode is database state (`PM-02`), never a header, a store or an env var (`ENV-07`); the guard is `PROPOSED` and unbuilt, and `OD-DOC-40`/`41` `[BLOCKER]` decide whether it yields to statutory erasure and whether test rows may touch the statutory invoice series | 15 min |
+| 36 | `39-Website-Build-Brief-Demo-Data-and-Image-Slots` | Only before building or drawing a **website** screen: which sections each page carries, the CSS box and `srcset` of every image slot, the `DD-01`…`DD-10` demo-data contract that keeps a fixture shaped like the real contract, and the five conflicts that pass found (`39` §6). It adds no route, no component name and no approval — those stay in `12`, `33` and `21` | 12 min |
 
 **Always read `21` before designing.** 237 decision rows are still open, 47 of them blockers. Designing against a
-documented-but-unapproved rule produces work that has to be thrown away. **`30`–`37` are themselves
-documented-but-unapproved**: they are `PROPOSED`, so a visual surface may be *built* from them only as a
-mock-up — shipping one requires the owner's design-gate decision (`30` §12, `26` §4.1). `OD-DOC-34`
+documented-but-unapproved rule produces work that has to be thrown away. **`30`–`37` and `39` are
+themselves documented-but-unapproved**: they are `PROPOSED`, so a visual surface may be *built* from them
+only as a mock-up — shipping one requires the owner's design-gate decision (`30` §12, `26` §4.1). The
+artwork those documents describe **has now partly been run** — 18 of the 93 asset rows are `GENERATED` as
+of 2026-10-22, and none is `APPROVED`, which is the difference between step 31 being possible and step 31
+being finished. `OD-DOC-34`
 `[BLOCKER]` sits in front of all of them for anything that renders an image: `13` §5.2's `img-src 'self'`
 and `24` §11's no-public-read rule do not permit the third-party media store the owner has asked for, so
 an `<img>` pointing at a CDN is a production-time failure, not a style choice. `OD-DOC-38` `[BLOCKER]`
@@ -158,12 +163,12 @@ which is why step 35 exists and why `38` §14 lists what is *not* settled there.
 | Your role | Minimum reading |
 |---|---|
 | Backend engineer | 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 16, 17, 23, **32, 35** |
-| Frontend / mobile engineer | 0, 1, 3, 4, 5, 6, 9, 10, 12, 15, 16, 17, 23, 27, 29, 30, **32, 33, 34, 35** |
+| Frontend / mobile engineer | 0, 1, 3, 4, 5, 6, 9, 10, 12, 15, 16, 17, 23, 27, 29, 30, **32, 33, 34, 35, 36** |
 | QA engineer | 0, 1, 6, 7, 8, 9, 13, 16, 18, 23, **34, 35** |
 | Finance / accountant | 0, 1, 2, 9, 11, 19, 22, 23, 24, **35** |
 | DevOps engineer | 0, 1, 10, 13, 14, 16, 19, 23, 25, **32, 35** |
 | PM / analyst | 0, 1, 2, 3, 6, 7, 8, 9, 13, 20, 21, 23, 24 |
-| New AI agent with no context | **All 36 steps.** Do not shortcut this one |
+| New AI agent with no context | **All 37 steps.** Do not shortcut this one |
 
 ---
 
@@ -454,6 +459,7 @@ without saying so explicitly.
 | An undecided question | `21` | `OD-xxx` |
 | A taken decision | `22` | `ADR-xxx` |
 | A commercial term | `26` | `OD-COM-xx` |
+| A website section, image slot or demo-data shape | `39` §2–§4 (values still come from `30`, ceilings from `32` §4, routes from `12` §2) | slot ids, `DD-01`…`DD-10` |
 
 ---
 
@@ -461,6 +467,7 @@ without saying so explicitly.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.10 | 2026-10-22 | Eng Lead (website-design pass) | §4's reading order gained **step 36 = `39-Website-Build-Brief-Demo-Data-and-Image-Slots`**, so the total is **37 steps, numbered `0`–`36`**, and the frontend/mobile shortcut now ends 32, 33, 34, 35, 36. §4's documented-but-unapproved warning widened from `30`–`37` to `30`–`37` **and `39`**, and it now states the distinction this pass created: 18 of the 93 asset rows are `GENERATED` as of 2026-10-22 and **none is `APPROVED`**, so running `34`'s prompts is not completing it. §13 gained the row "a website section, image slot or demo-data shape" pointing at `39` §2–§4 while keeping `30`, `32` §4 and `12` §2 as the homes of values, ceilings and routes. **No law, `SEC-A-*` rule, gate, module boundary or estimate changed**; the register figure was not touched because this pass added no decision row — the questions `39` raised are recorded inside `39` §6/§7 and are being put to the owner directly. | §4, §13, header, Revision History |
 | 1.9 | 2026-10-21 | Eng Lead (scaffold and git-baseline pass) | §2’s tooling paragraph now gives the checkers’ home `maintenance/scripts/` and the pre-audit corpus `maintenance/backups/` (relocated, not deleted), replaces the instruction to read a file count the validators do not print with the glob check and the `MERMAID BLOCKS` quantity, and records the measured behaviour: every script resolves paths against the **caller’s** directory, so `count_rows.py` wants the register path (root-plus-path form) from anywhere. §6 gained **correction (4)**: the per-surface directories from `14` §2 and `35` **now exist on disk** — 221 empty directories from the 2026-10-21 scaffold, `.gitkeep` in 164 leaves — so an agent that finds them must not read the skeleton as a completed task, and **must not write code, a manifest or a dependency into them while `OD-DOC-38` stands**. **No law, reading-order step, rule or prohibition changed** — `SEC-A-11` and step 35 stand as written. | §2, §6 Every scaffold figure in this pass is **re-measured from the filesystem**, not taken from the creation script’s own tally: **221 directories** (204 of them under `apps/`), **164 leaf directories each holding one `.gitkeep`**, **57 intermediate**, and **zero non-`.gitkeep` files anywhere in the tree** — which is also the machine-checkable form of “no source code”, and replaces the 167 the script printed. |
 | 1.8 | 2026-10-21 | Eng Lead (tooling and backup relocation) | §2's 'single most important fact' and its checker-invocation paragraph now point at `maintenance/scripts/`, and record that `maintenance/backups/` holds the three timestamped copies of `Docs/` the suite's re-measurement argument depends on — evidence, not clutter, **not to be deleted**. `count_rows.py`'s instruction changed from 'run from `Docs/`' to 'pass the register path', which is the form that survives the move and works from any directory. Verified rather than assumed: `contrast.py` runs argument-free from the new location and reproduces every ratio in `30` §3. **No law, reading-order step, rule or prohibition changed** — `SEC-A-11` and step 35 stand as written. | §2 |
 | 1.7 | 2026-10-21 | Eng Lead (platform-mode pass) | §9 gained **`SEC-A-11`**: an agent must read the mode **only** from `platform.platform_mode` — never from a header, a client store, an environment variable or a flag; never implement a UI-only guard; and **refuse to write a hard delete** where a soft delete or a status transition exists, raising the question to `21` instead of choosing silently. §4's step 3 now directs any agent to `01` §4.11 and `38` **before** writing delete, truncate, purge, migration or seed code, and **step 35 (`38`) was added to the mandatory reading order — 35 steps became 36, numbered `0`–`35`**, with the backend, frontend/mobile, QA, finance and DevOps shortcuts each gaining it. §4's lead figure was re-measured from the register (**237 rows, 47 blockers**) rather than carried forward. **§2's checker-invocation paragraph was corrected the same pass**: it told the reader to "read the file count `validate_docs.py` prints", and the script prints no file count (`README` §12.5 says so plainly) — the instruction now names the glob check and the `MERMAID BLOCKS` quantity, which `lint_mermaid.py` does print (**27** blocks, re-measured this pass, not inherited from the 26 the older notes carried). **No law, gate or module boundary was removed.** | §2, §4, §9 |

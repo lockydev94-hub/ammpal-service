@@ -4,3 +4,34 @@ maintenance/backups/
 # Python bytecode from the checkers in maintenance/scripts/
 __pycache__/
 *.pyc
+
+# ---------------------------------------------------------------------------
+# Node tooling — the first build artefacts in this repository (`39` §5's second condition:
+# installing a library means writing `apps/web/package.json` and nothing else at the root).
+node_modules/
+.next/
+out/
+dist/.cache/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+
+# ---------------------------------------------------------------------------
+# Generated artwork stays local (owner, 2026-10-22). `design-assets/manifests/` IS tracked: the
+# register and the manifest are what say a file must be, and `32` §6 makes approval the owner's act,
+# so nothing here is evidence of approval. The repo is public; `GENERATED` artwork is not brand
+# property yet (`OD-COM-12`).
+design-assets/**/*.png
+design-assets/**/*.jpg
+design-assets/**/*.jpeg
+design-assets/**/*.webp
+design-assets/**/*.avif
+design-assets/**/*.gif
+design-assets/**/*.ico
+design-assets/**/*.svg
+
+# Artwork whose register rows are BLOCKED (`34` §4.6) — never a candidate for a public remote.
+maintenance/holding-blocked/
+
+# Contact sheets and QC crops produced by the intake and review passes.
+maintenance/previews/

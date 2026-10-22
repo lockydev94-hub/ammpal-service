@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-32 |
-| Version | 1.4 |
+| Version | 1.5 |
 | Status | **PROPOSED — not approved.** The register format is usable now; nothing inside it is approved artwork. |
 | Owner | Product Design Lead + Frontend Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `30`, `31`, `34`, `12`, `13`, `16`, `24`, `09`, `35` §6 (the storage-layout half of §6), `37` §7.1 (what a consumer does with a missing asset) |
 | Artifacts | `design-assets/manifests/asset-inventory.csv`, `design-assets/manifests/asset-manifest.json`, `gen_asset_inventory.py`, `validate_assets.py` |
 
@@ -17,7 +17,7 @@
 
 | File | Holds | Written by | Read by |
 |---|---|---|---|
-| `asset-inventory.csv` | **intent** — 93 planned/registered rows, one per asset the documents ask for | `gen_asset_inventory.py` (regenerate, never hand-edit) | `validate_assets.py`, `33`, designers |
+| `asset-inventory.csv` | **intent** — 105 rows (77 planned, 18 generated and awaiting approval, 6 blocked, 4 registered references), one per asset the documents ask for | `gen_asset_inventory.py` (regenerate, never hand-edit) | `validate_assets.py`, `33`, designers |
 | `asset-manifest.json` | **fact** — one record per file that exists on disk, with measured size, measured pixels and a SHA-256 prefix | designer at export time, then verified | `validate_assets.py`, build pipeline |
 
 The split exists because a plan and an inventory drift the moment they share a file: an approved
@@ -133,13 +133,13 @@ exactly how decorative images end up with alt text and content images end up wit
 
 | `a11y_treatment` | Meaning | Alt rule | Rows |
 |---|---|---|---|
-| `ALT_REQUIRED` | the image carries the message | non-empty `alt_text_en`; `or`/`hi` wording owed by the content owner (`20` §11 GLO-01) | **24** — hero, illustrations, empty/success/error states, category-image, photo-placeholder, logo |
+| `ALT_REQUIRED` | the image carries the message | non-empty `alt_text_en`; `or`/`hi` wording owed by the content owner (`20` §11 GLO-01) | **36** — hero, illustrations, empty/success/error states, category-image, photo-placeholder, logo |
 | `LABELLED_BY_ADJACENT_TEXT` | visible text already names it (`12` §3 screen 4: "icons, **names** (localised)") | ship `alt=""`, `aria-hidden` on the graphic only | **49** — 6 category icons + 43 Control Center nav icons |
 | `DECORATIVE_EMPTY_ALT` | chrome — app icon, favicon, PWA icon, pattern, store icon, mark | `alt=""` or not present in the DOM | **12** — app/store/PWA/favicon/pattern/mark |
 | `SOCIAL_META_IMAGE` | referenced by `og:image`, no DOM alt | none; must still avoid baked text | **3** — 2 OG rows + the Play feature graphic |
 | `NOT_SHIPPED` | internal reference or blocked capture set | n/a | **5** — 4 registered references + the screenshot set |
 
-The five treatments partition all **93** rows (24 / 49 / 12 / 3 / 5); `validate_assets.py` recomputes them, so this table cannot silently go
+The five treatments partition all **105** rows (36 / 49 / 12 / 3 / 5); `validate_assets.py` recomputes them, so this table cannot silently go
 stale. `12` §6.3 A11Y-1…A11Y-7 remain the normative accessibility rules — this section is the asset
 view of them, not a second statement of them.
 
@@ -175,6 +175,7 @@ BLOCKED ──────┘   (a BLOCKED row cannot enter GENERATED, and a GEN
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.5 | 2026-10-22 | Product Design Lead + Frontend Lead (website-design pass) | Two count-only corrections, both re-measured from the regenerated CSV rather than carried forward: §1's register row **93 planned/registered → 105 rows**, broken out as the states they are actually in (77 `PLANNED`, 18 `GENERATED`, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`**), and §5's accessibility partition **93 (24/49/12/3/5) → 105 (36/49/12/3/5)** — all twelve newly registered website-section rows are `ALT_REQUIRED`, and their alt texts describe the drawing rather than assert verification, a price or a phone number. **No rule in this document changed:** the `BLOCKED`-cannot-enter-`GENERATED` and `GENERATED`-cannot-be-shipped sentences at §6 are exactly why the six generated category PNGs sit in `maintenance/holding-blocked/` instead of `design-assets/`, why the homepage hero may be `GENERATED` at `-v02` and still `NOT_APPROVED`, and why the eighteen intaken files are placeholders under `OD-COM-12` and `OD-DOC-34` rather than assets a build may reference. | §1, §5, Revision History, header |
 | 1.4 | 2026-10-21 | Product Design Lead (scaffold and git-baseline pass) | §3’s `sha256_16` row is now past tense about the missing version control — the workspace became a git repository on 2026-10-21 (`main`, baseline commit `0cc6910`) — and **the field is kept, not dropped**, because the hash plus byte-length is what §4’s verification proves and git history does not carry it. For the same reason `.gitattributes` was written with `* -text` before the first commit: EOL normalisation would silently rewrite byte lengths and invalidate the recorded hashes. §4’s verification block now calls `maintenance/scripts/gen_asset_inventory.py` and `validate_assets.py` at their relocated paths; re-run after the edit, the inventory is unchanged and the validator still reports **0 errors** against the 4 manifest records. **No grammar, treatment, export figure or lifecycle rule changed**, and no asset was generated or moved. | §3, §4 |
 | 1.3 | 2026-10-21 | Product Design Lead (tooling and backup relocation) | §4's verification block now calls the two scripts at `maintenance/scripts/` and records that the caller's directory still has to be the project root. Both were re-run after the move: `gen_asset_inventory.py` regenerates the same **93 rows** and the same status split (83 PLANNED / 6 BLOCKED / 4 REGISTERED), and `validate_assets.py` still reports **0 errors** against the 4 manifest records. **No grammar, treatment, export figure or lifecycle rule changed**, and no asset was generated, approved or moved. | §4 |
 | 1.2 | 2026-10-21 | Product Design Lead + Engineering Lead (design-engineering structure pass) | Depends On now points at **`35` §6** (the storage-layout half of §6 is the token package’s and asset directories’ problem, not this document’s) and **`37` §7.1** (what a consumer does when the asset is absent, which is the other half of every `approval_status` value here). **The naming grammar, the two register formats, the export ceilings, the alt-text treatments and §4’s byte-and-hash fields are unchanged**, and the measured state on disk is unchanged too: `design-assets/` holds 11 top-level directories (25 counting sub-folders), **two register files and no artwork**, and `asset-manifest.json` still records four files, all `NOT_FOR_PRODUCTION`. Nothing was renamed, moved or deleted. | Depends On, Revision History, header |

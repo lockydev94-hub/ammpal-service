@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-14 |
-| Version | 1.6 |
+| Version | 1.8 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `08`, `10`, `21`, `26`, `29` |
 
 ---
@@ -162,11 +162,30 @@ ammpal-service/
 > below. The layout follows side A because `ADR-011` is the only **Accepted** backend decision on file;
 > `OD-DOC-38` remains open and `35` §4's FastAPI alternative was not created. `08` §9 and `27` §6 mirror
 > this tree and disagree about worker placement (`OD-DOC-39`) — `35` `PS-01` names §2 above as canonical.
+>
+> **Superseded 2026-10-22 for `apps/` and `packages/`, and the sentence it is superseded on is the one above:
+> "no `package.json`, `tsconfig`, lockfile, source file … exists".** Four workspaces now carry real code —
+> `apps/web` (Next 15 App Router, Home's eight sections), `packages/ui`, `packages/contracts` and
+> `packages/design-tokens`: **87 source/config files** between them (counted by `find` over those four paths,
+> excluding `.gitkeep`, `node_modules/`, `.next/`, `dist/`, `*.tsbuildinfo` and `next-env.d.ts` — build output
+> is not source), the remaining **162 `.gitkeep` leaves**
+> still empty. Each workspace owns its own `package.json`, lockfile, `node_modules` and `tsconfig`; **nothing
+> was placed at the repository root**, which is the constraint the owner set when approving the install, so
+> `OD-14-04` stays open and `apps/web/` records the monorepo answer as an assumption made visible (`39` §5).
+> What that does *not* buy: `P0-03` is **still not met**, because it asks that `apps/*` **and** `packages/*`
+> build with CI green — there is no workflow YAML and no backend to build; the four workspaces that exist are
+> verified locally (`tsc --noEmit` clean across all four, `next build` clean, ESLint 0 errors). `ADR-025`
+> still bars `[IMPLEMENTED]` from every path below, and the application code is **uncommitted by owner
+> direction** (2026-10-22): the public remote carries the documents, the registers and the `.gitignore` that
+> keeps generated artwork out of it, not the build.
 
-> **This tree is the target for the application repository; it is not the current workspace, and no
-> directory in it has been created.** The workspace today holds `Docs/` (capitalised — this suite),
-> `visualize-image-of-project/` (4 reference infographics, `NOT_FOR_PRODUCTION`) and `design-assets/`
-> (asset folders and two registers, **no artwork**) — `design-assets/` deliberately does **not** appear
+> **This tree is the target for the application repository; it is not the current workspace, and only four of
+> its paths hold anything.** The workspace today holds `Docs/` (capitalised — this suite),
+> `visualize-image-of-project/` (4 reference infographics, `NOT_FOR_PRODUCTION`), `maintenance/` (the checkers,
+> the prompt pack and the intake scripts), `design-assets/`
+> (asset folders, two registers and 19 generated raster masters with 58 exports — **none approved**) and,
+> since 2026-10-22, the four front-end workspaces named above —
+> `design-assets/` deliberately does **not** appear
 > above, because `31` §6 places approved asset masters at workspace root alongside their manifests, and
 > because **three of this document's own `[BLOCKER]` rows are open**: `OD-14-04` (one monorepo or
 > separate repos per app — the decision that determines whether §2's shape is even correct), `OD-14-03`
@@ -228,7 +247,7 @@ apps/api/src/modules/booking/
 | TS-03 | Explicit return types on exported functions. |
 | TS-04 | `import type` for type-only imports. |
 | TS-05 | Barrel files only at module roots (`index.ts`), never deep in the tree. |
-| TS-06 | No default exports. |
+| TS-06 | No default exports — **with one carve-out, because the framework requires it**: a Next.js App Router file whose *role* is a default export (`page`, `layout`, `not-found`, `route`, `loading`, `error`, `template`, `default`, and the `generateMetadata`/`generateStaticParams` companions those files already export as named) exports default. The rule still binds everything else in those files: components, helpers, fixtures and tokens are named exports, and the default in a route file is the framework's entry point, not a style choice. **Enforcement is not in place yet** — `apps/web/eslint.config.mjs` does not switch `import/no-default-export` on, so nothing fails today. Adding it needs a `files` override for `app/**` *and* for the toolchain's own config files, which default-export by contract (`next.config.ts`, `postcss.config.mjs`); naming those two is what makes the exception a line a reviewer can read rather than a suppressed warning. |
 | TS-07 | Domain errors are typed unions or a typed `DomainError` class — never string codes inline. |
 | TS-08 | Money is `number` of paise with a branded type `type Paise = number & { __brand: 'paise' }`. Rates are `type Bps = number & { __brand: 'bps' }`. Branded types prevent mixing units. |
 
@@ -487,6 +506,8 @@ export class DomainError extends Error {
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.8 | 2026-10-22 | Frontend Lead + Eng Lead (first code merged into the tree) | **Two stale statements corrected, measured rather than reworded.** `TS-06` gains the carve-out the framework forces: an App Router file whose *role* is a default export (`page`, `layout`, `not-found`, `route`, `loading`, `error`, …) may have one, everything else in the repository still may not — and the row now says plainly that **enforcement is not in place**, because `apps/web/eslint.config.mjs` does not enable `import/no-default-export` and switching it on needs overrides for `app/**` plus `next.config.ts` and `postcss.config.mjs`, which default-export by contract. §2's 2026-10-21 scaffold block is **kept as written and annotated beneath it**: "no `package.json`, `tsconfig`, lockfile, source file … exists" is no longer true of the front end (`apps/web`, `packages/ui`, `packages/contracts`, `packages/design-tokens` hold **87 source/config files**; **162 `.gitkeep` leaves remain empty**, nothing is at the repository root), and the block that claimed "no directory in it has been created" now lists what the workspace actually holds, `maintenance/` and the four workspaces included. `P0-03` is restated as **still not met** — no workflow YAML, no backend, verification is local only — and `ADR-025`'s `[IMPLEMENTED]` bar is unchanged, alongside the owner's 2026-10-22 scope decision that the application code stays **uncommitted** while documents, registers and the artwork `.gitignore` are pushed. **No stack row (§1), module boundary, `[BLOCKER]` or standard other than `TS-06` changed**; `OD-14-04`, `OD-14-03`, `OD-14-01`, `OD-DOC-38` and `OD-DOC-39` all stay open exactly as §2 records them. | §2, §TS-06, Revision History, header |
+| 1.7 | 2026-10-22 | Eng Lead (website-design pass) | §2's workspace-state annotation was **re-measured, not reworded from memory**: `design-assets/` no longer holds "two registers, no artwork". It now holds those two registers plus **19 raster masters and 58 exports** in six sections (`01-brand`, `02-website`, `03-customer-app`, `04-partner-app`, `05-control-center`, `08-store`), all `GENERATED` and **none approved**, with the six generated-but-`BLOCKED` category PNGs held outside the tree in `maintenance/holding-blocked/`. The counts were printed by `validate_assets.py` (93 rows: 65 `PLANNED`, 18 `GENERATED`, 6 `BLOCKED`, 4 `REGISTERED`; 22 manifest records; 0 errors) and the file totals by a filesystem glob, not taken from the intake script's own output. **No stack row, standard, module boundary or `[BLOCKER]` in this document changed**; `OD-14-04`/`09` remain open and nothing was installed, so `apps/` and `packages/` remain 221 empty directories. | §2, Revision History, header |
 | 1.6 | 2026-10-21 | Eng Lead (scaffold and git-baseline pass) | §2’s canonical tree was **annotated, not redrawn** (`DEC-07`): the `docs/` line now records that it exists as `Docs/` (capital D), and the `scripts/` line records that it is **not** the documentation checkers, which live at `maintenance/scripts/`. A new **"Scaffold status, 2026-10-21"** blockquote states what a tree diagram cannot: 221 directories (164 leaves) were created empty from this section and `35` §3/§5–§8, `.gitkeep` marks only the leaves, and no `package.json`, dependency, source file, migration or CI configuration exists in any of them, so `P0-03` ("`apps/*` and `packages/*` build; CI runs green on an empty app") is **not met**. Side A of the `OD-DOC-38` conflict — this section’s NestJS line, the only **Accepted** decision on the record — is the one built, and the note says that is a choice of evidence, not a resolution; `08` §9 and `27` §6 mirror the same tree and disagree with it via `OD-DOC-39`. **No standard, version, dependency or `ES-*` rule was changed.** | §2, §2.1 |
 | 1.5 | 2026-10-21 | Eng Lead (platform-mode pass) | **`ENV-07`** added in §11: the platform mode is database state, not configuration. An environment variable may **seed the row once, at first boot, and never override it afterwards**; any code path that reads the mode from config, a feature flag, a request header or a client store is a defect, and the standard is stated here so a reviewer can reject it by rule number. This is the engineering-standards half of `38` `PM-02`/`PM-04` and it exists because the failure mode is invisible — a correctly-built screen can be pointed at a `TESTING` database and show the wrong thing convincingly. | §11 |
 | 1.4 | 2026-10-21 | Engineering Lead + Frontend Lead (design-engineering structure pass) | The document this pass had to annotate rather than rewrite, because its §2 tree is the suite’s **canonical** one (`35` `PS-01`). §2’s lead blockquote now names both open questions sitting on that tree — `OD-DOC-38` `[BLOCKER]` (FastAPI as instructed versus Accepted `ADR-011`’s NestJS) and `OD-DOC-39` `[IMPORTANT]` (worker placement, where `08` §9 diverges) — and says why the interiors live in `35` instead of being drawn a fourth time here. §2.1 is now labelled the **NestJS** interior, with `35` §4 named as the contingent Python one and `ES-01`’s purity requirement explicitly surviving a change of language. §1.3 gained rule **6**: a front-end dependency is chosen from `36` §4/§5, and a capability with no admitted library goes to `21` before it goes into `package.json`. §6.1 and §6.2 gained one-line pointers to `36` and `37`, so the `FE-*`/`FL-*` rules stay rules rather than catalogues. **§13 gained `OD-14-09`…`13`** (styling engine, animation runtime, charting and data-grid, workshop and visual regression, token build) in the register’s own order and wording. No stack row, version, cadence rule or `ES-*`/`FE-*`/`FL-*`/`CI-*` rule was altered. | §1.3, §2, §2.1, §6.1, §6.2, §13, Revision History, header |

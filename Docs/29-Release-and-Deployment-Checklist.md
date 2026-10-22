@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-29 |
-| Version | 1.6 |
+| Version | 1.7 |
 | Status | Approved for Design & Development |
 | Owner | Engineering Lead + QA Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `15`, `16`, `17`, `12`, `13`, `30`, `32`, `34` |
 
 > **Implementation status — read this first.**
@@ -170,7 +170,7 @@ detail (`16`). This document *consumes* `15` and `16`; it does not restate them.
 **4.8 Visual, asset, structure and component gate** `[PROPOSED]` — added with `30`–`33`, extended at v1.2 for `34` and `OD-DOC-34`, and at v1.3 for `35`–`37`; **no release has passed through any of it, because no release, and no scaffold, exists.**
 
 - [ ] `python3 maintenance/scripts/validate_assets.py` exits `0` — run **from the workspace root**, which is where its relative `design-assets/` and `Docs/` paths resolve (`README` §12.5) — filename grammar, alt-text treatment, one inventory ID per file under `design-assets/`, and the manifest agreeing with each registered file on **bytes, hash, format and measured pixels** (`32` §4).
-- [ ] No screen references an asset whose `approval_status` is not `APPROVED`. As written this means **no shipped screen may reference any asset**: the 93 inventory rows are 83 `PLANNED`, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`** (`32` §6). This item cannot be ticked by approving a file yourself — approval is the owner's act.
+- [ ] No screen references an asset whose `approval_status` is not `APPROVED`. As written this means **no shipped screen may reference any asset**: the 105 inventory rows are 77 `PLANNED`, 18 `GENERATED`, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`** (`32` §6). The eighteen that exist as files change nothing about this item — they are the `GENERATED` half of a lifecycle whose next state only the owner's dated record can grant, and `32` §6 forbids shipping a `GENERATED` row in a build at all. This item cannot be ticked by approving a file yourself — approval is the owner's act.
 - [ ] The four `visualize-image-of-project/` infographics are absent from every bundle; they are registered as `NOT_FOR_PRODUCTION` (`31` §8).
 - [ ] Colour, type, spacing, radius, elevation, z-index and motion come from the tokens in `30` §3–§7, not from literals in a component; every new text-on-background pair is measured at WCAG 2.1 AA, per `12` §6.3 `A11Y-1` and `30` §3.
 - [ ] Every new image row in the inventory carries an `a11y_treatment`, and a `ALT_REQUIRED` row carries non-empty alt text — the validator refuses the mismatch in both directions (`32` §5).
@@ -869,6 +869,7 @@ Call <SUPPORT_CONTACT> or reply to this message. For urgent job issues, referenc
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.7 | 2026-10-22 | DevOps Lead + Product Design Lead (website-design pass) | §4.8's asset item re-measured: the register is **105 rows — 77 `PLANNED`, 18 `GENERATED`, 6 `BLOCKED`, 4 `REGISTERED`, 0 `APPROVED`** — and the wording now says plainly that the eighteen existing files change nothing about the gate: `32` §6 keeps a `GENERATED` row out of a build and only the owner's dated record moves it, so the item still reads "no shipped screen may reference any asset" until an approval exists. **No gate, threshold, evidence requirement or `[PROPOSED]` status was relaxed, and no item was ticked** — there is still no release and no scaffold, so nothing has passed through any of it. | §4.8, Revision History, header |
 | 1.6 | 2026-10-21 | DevOps Lead (scaffold and git-baseline pass) | §4.8’s asset gate is now invoked as `python3 maintenance/scripts/validate_assets.py` **run from the workspace root**, with the reason: the scripts resolve paths against the caller’s directory, so pointing at the bare folder is a broken invocation, not a passed gate. The `OD-DOC-38` item is retitled **"…before any code is written into the scaffold"** — the owner’s 2026-10-21 scaffold direction and `git init` consciously overtook the row as written, so its status now says that plainly instead of the gate being quietly dropped. **No gate was added, removed or ticked**: the item remains untickable while 0 of the 93 inventory rows carry `APPROVED`, and no release in this suite has passed through §4 at all. | §4.8 |
 | 1.5 | 2026-10-21 | DevOps Lead (tooling and backup relocation) | §4.8's asset-integrity item now gives `validate_assets.py`'s new path and names the directory it must be run from, because the script resolves both `design-assets/` and `Docs/` against the working directory — an all-green run from the wrong folder is a broken invocation, not a passed gate. **No gate was added, removed or ticked**: the item remains untickable while 0 of the 93 inventory rows carry `APPROVED`, and this suite still describes no release that has passed through §4 at all. | §4.8 |
 | 1.4 | 2026-10-21 | Eng Lead + QA Lead (platform-mode pass) | Four changes, all of them about this document's own steps. §7.1 gained a **T-20 pre-deploy assertion** — read `platform.platform_mode` from the database and record it, and **stop the deploy** if production infrastructure resolves `TESTING`, with the explicit prohibition on demoting or promoting to make a release go through (`25` §25.0). §4.2 gained a **`TE-06` mode-guard CI stage row**, marked `[PROPOSED]` because `ADR-026` is not accepted. §6.1 gained an `[OPEN]` note recording a collision this document cannot paper over: the doctrine's own **Contract phase** is made of `DROP COLUMN` / `DROP TABLE` / `TRUNCATE`, which `38` class A refuses in `PRODUCTION` — three readings exist, `DEC-03` forbids choosing one here, and a release ticket containing a contract step inherits the blockage. §17 gained **`U-29`** saying the same thing from the gate side. **No threshold, gate, severity band, role or sign-off rule was changed, and no gate in this document has ever been executed** — no release and no scaffold exist. | §4.2, §6.1, §7.1, §17 |

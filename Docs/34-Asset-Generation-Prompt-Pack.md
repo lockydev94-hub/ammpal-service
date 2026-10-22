@@ -3,17 +3,17 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-34 |
-| Version | 1.1 |
+| Version | 1.2 |
 | Status | **PROPOSED — not approved.** This is a run sheet, not a production order. Nothing in it authorises spending generation credits. |
 | Owner | Product Design Lead (prompt approval) + Frontend Lead (intake) |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `30` §3/§4/§5/§11, `31`, `32`, `33`, `21` §7, `26` §4.1, `36` §3 (nothing generated here may be served from an origin the CSP gate rejects), `37` §7.1 (where a generated file is consumed) |
 | Blocks | nothing; it is consumed by whoever runs the artwork, after `OD-DOC-34` and `OD-DOC-30` close |
 
 ---
 
-## 1. Why this document exists, and why no image was made in this pass
+## 1. Why this document exists, and where the artwork now stands
 
 The owner directed placeholder-first delivery: SVG or a blank container at design time, real imagery
 when the upload and storage system exists (`30` §5.3, `OD-DOC-36`). The same owner said that if this
@@ -21,27 +21,44 @@ tool cannot generate an asset, the prompt should be written for another model to
 (ChatGPT, Gemini, and similar). So the deliverable here is **prompts, not pictures** — and the split is
 measured from the register rather than asserted.
 
-From `design-assets/manifests/asset-inventory.csv`, 93 rows:
+From `design-assets/manifests/asset-inventory.csv`, 105 rows (93 at first issue; the 12 website-section
+rows of §4.7 were registered on 2026-10-22 on the owner's direction):
 
 | Production route | Rows | Asset types | Run through a model? |
 |---|---:|---|---|
-| **Generatable raster** | **24** | `empty-state` 10, `category-image` 6, `og-image` 2, `hero` 1, `illustration` 1, `success-state` 1, `error-state` 1, `pattern` 1, `feature-graphic` 1 | **Yes** — §4's prompts |
+| **Generatable raster** | **36** | `illustration` 12, `empty-state` 10, `category-image` 6, `hero` 2, `og-image` 2, `success-state` 1, `error-state` 1, `pattern` 1, `feature-graphic` 1 | **Yes** — §4's prompts |
 | Vector / authored | 68 | `nav-icon` 43, `category-icon` 6, `infographic` 4, `map-marker` 4, `logo` 3, `favicon` 2, `pwa-icon` 2, `mark` 1, `app-icon` 1, `store-icon` 1, `photo-placeholder` 1 | **No** — `30` §11. A model produces a 1024 px raster where a 1 KB path is required |
 | Real capture only | 1 | `screenshot-set` | **No** — must come from an approved build, and `33`/`29` forbid an invented one |
 
-Of the 24 generatable rows, **18 can be prompted today and 6 are `[BLOCKED]`**: the six
+Of the 36 generatable rows, **30 have a prompt that can run today and 6 are `[BLOCKED]`**: the six
 `category-image` rows depend on the launch-category decision (`OD-DOC-27` 3 vs 4 vs 6 vs 2,
 `OD-DOC-28` salon/beauty, `OD-DOC-33` whether the asset unit is family, service or variant). Generating
 them now means generating them twice.
 
-**Nothing was generated in this pass**, and that is a decision, not an omission: `OD-DOC-30` (palette
-approval), `OD-DOC-34` (storage and CSP), `OD-COM-12` (IP position on generated design assets) and
-`OD-DOC-33` are all open, generation costs credits that cannot be refunded by deleting the output, and
-`30` §11 shows that most of the remaining inventory is un-generatable at any price.
+**The first 18 of those 30 were run and intaken on 2026-10-22; the 12 website-section rows of §4.7 are
+registered and waiting to be run.** What "run" bought is recorded in `32` §6 and the register: 18 masters,
+58 exports, 22 manifest records, all `GENERATED` and **none `APPROVED`** — production of an image is not
+acceptance of a design (`DEC-03`). What has *not* changed is the warning this section was written to give:
+`OD-DOC-30` (palette approval), `OD-DOC-34` (storage and CSP), `OD-COM-12` (IP position on generated
+design assets) and `OD-DOC-33` are all still open, generation costs credits that cannot be refunded by
+deleting the output, and `30` §11 shows that most of the remaining inventory is un-generatable at any price.
 
 ---
 
 ## 2. The style lock — paste this ahead of every prompt
+
+> **What actually got past the model on 2026-10-22 is a reworded form of this block, and the wording
+> below is kept as the requirement record.** The `AMM-BRAND-PATTERN-BACKGROUND` run was **refused by
+> ChatGPT's content filter** ("the image we created may violate our content policies") — nothing about the
+> subject was sensitive; the trigger was the `STRICTLY FORBIDDEN` wall itself. A classifier reading eight
+> lines of *identifiable people*, *visible faces*, *photorealistic skin*, *watermarks* and *brand names*
+> sees a dense bag of person- and identity-words whether they arrive negated or not, and negation is weak
+> signal. The operative wording is therefore the four rules in `maintenance/prompts/00-START-HERE.md`
+> §"Why the wording was rewritten" — ask for the person-free image **positively**, replace the prohibition
+> wall with a short `KEEP THE IMAGE TO:` line, keep only the *no text / no numbers* negations, and move
+> every person-, face-, brand- or plate-named **reject criterion out of the prompt and into the human
+> "check before saving" list**. No rejection was dropped, only relocated: the model never sees them, the
+> reviewer still enforces all of them.
 
 Every prompt below is the style block plus a subject line. Do not run a subject on its own; the
 consistency the brief asks for comes from the block, and it is what makes 18 files look like one system.
@@ -103,11 +120,24 @@ This is the single reason the intake status in `32` §4 is `GENERATED` and never
 
 ---
 
-## 4. Run sheet — 24 rows
+## 4. Run sheet — 36 rows
 
 `Ratio` is the generation aspect ratio to request; `Target` is the shipped size from the inventory,
 produced at intake. `File` is the `32` §2 name with the mandatory `-v01` suffix; a regeneration is
 `-v02`, never an overwrite.
+
+> **Status as re-measured on 2026-10-22, from `validate_assets.py` (105 rows — 18 `GENERATED`, 6
+> `BLOCKED`, 77 `PLANNED`, 4 `REGISTERED`; 22 manifest records; 0 errors).** The `Status` column in
+> §4.1–§4.6 was the state at first issue and the register is the authority: **every row of §4.1–§4.5 is
+> now `GENERATED`** — the 4 marketing/brand rows, 5 customer empty states plus the booking success state,
+> the 4 partner empty states, the 2 Control Center states and the serviceability illustration, the store
+> feature graphic, both OG images and the homepage hero — and the six §4.6 `category-image` rows are
+> unchanged at `BLOCKED`, with their generated PNGs held in `maintenance/holding-blocked/` because a
+> `BLOCKED` row may not enter `GENERATED` (`32` §6). Two versions matter: the homepage hero ships
+> **`-v02`** (the owner's choice on sight of both; `-v01` stays on disk as the rejected attempt, not as a
+> deliverable), and `AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600` is a visual-fail candidate — its gold bell
+> breaches `30` §3's 2 % metal budget, so it owes a `-v02` before anyone calls the set finished. §4.7 adds
+> the 12 website-section rows, which are registered and **not yet generated**.
 
 ### 4.1 Marketing and brand (4 rows — run these first, they set the tone)
 
@@ -230,6 +260,49 @@ in four places) and `OD-DOC-33` (is the asset bound to a family, a service or a 
 category-image rows assume family-level binding. If the owner binds at service level, the count is
 different again, and nothing here should be read as having chosen.
 
+### 4.7 Website-section artwork (12 rows — registered 2026-10-22, not yet generated)
+
+The owner's direction was that **the site being designed sells home appliance repair**; the other
+categories are later work. These twelve rows are the appliance, booking-step and support imagery for
+`12` §2.1's Home sections and for `/services`, `/pricing`, `/partner` and `/support`. They are rows of
+this register (§1's generatable-raster count is 36 because of them), the full paste-ready blocks live in
+`maintenance/prompts/10-website-sections.md`, and the slots they fill — with the grid box, the @2x need
+and the byte ceiling for each — are measured in `39` §3.
+
+| File | Target | Ratio | Subject | Element it serves (`12` §2.1) |
+|---|---|---|---|---|
+| `AMM-WEB-ILLU-AC-REPAIR-800` | 800 × 600 | 4:3 | split AC indoor unit on a pale wall | Home service categories |
+| `AMM-WEB-ILLU-FRIDGE-REPAIR-800` | 800 × 600 | 4:3 | two-door refrigerator, doors closed | Home service categories |
+| `AMM-WEB-ILLU-WASHING-MACHINE-REPAIR-800` | 800 × 600 | 4:3 | front-load washing machine | Home service categories |
+| `AMM-WEB-ILLU-MICROWAVE-REPAIR-800` | 800 × 600 | 4:3 | countertop microwave | Home service categories |
+| `AMM-WEB-ILLU-WATER-PURIFIER-REPAIR-800` | 800 × 600 | 4:3 | under-sink purifier, one visible cartridge | Home service categories |
+| `AMM-WEB-ILLU-STEP-SEARCH-800` | 800 × 600 | 4:3 | house roofline under a rounded search ring | Home how-it-works, step 1 |
+| `AMM-WEB-ILLU-STEP-SLOT-800` | 800 × 600 | 4:3 | blank calendar card, one space marked | Home how-it-works, step 2 |
+| `AMM-WEB-ILLU-STEP-VISIT-800` | 800 × 600 | 4:3 | toolbox on a folded mat before a closed door | Home how-it-works, step 3 |
+| `AMM-WEB-ILLU-TRUST-VERIFIED-800` | 800 × 600 | 4:3 | screwdriver and spanner on a folded cloth | Home trust signals |
+| `AMM-WEB-ILLU-PRICING-TRANSPARENT-800` | 800 × 600 | 4:3 | estimate sheet with three blank bands | `/pricing` |
+| `AMM-WEB-ILLU-SUPPORT-HELPLINE-800` | 800 × 600 | 4:3 | handset in its cradle, closed notebook | `/support`, `/toll-free` |
+| `AMM-WEB-HERO-PARTNER-1600` | 1600 × 1000 | 16:10 | trade morning, left half kept empty | `/partner` hero |
+
+Three rules distinguish this group from the eighteen already run, and they are the reason the run order
+puts them after the empties:
+
+1. **The five appliance tiles and the three step cards are a family, not twelve independent images.**
+   Same camera height, same object scale, same ground; judged side by side. One tile drawn in perspective
+   beside four square-on ones is the fastest way to make a catalogue page look assembled, and that is a
+   `-v02` decision, not a save.
+2. **Nothing in this group may carry a claim the record has not produced.** No badge, seal, star, shield
+   or certificate edge in the trust drawing; no figure, currency mark or percentage in the pricing one; no
+   phone number in the support one; no earnings, payout date or partner count in the partner hero. Those
+   four are `34` §7's invented-artefact prohibition applied to the specific pixels a model is most likely
+   to add, and the alt texts registered for these rows describe the drawing rather than restating a
+   promise (`DD-06`).
+3. **They ship as SVG.** Each row is `format = svg` with the `32` §4 illustration ceiling of 12 KB; a
+   generated raster meets the byte figure but is not vector, so the raster is the design-time placeholder
+   and the traced path is owed before any build ships with it (`30` §11). The build proceeds against
+   reserved containers meanwhile (`37` §7.1) — that is the placeholder-first contract working as designed,
+   not a workaround.
+
 ---
 
 ## 5. Tool notes — the block is portable, the syntax is not
@@ -320,9 +393,11 @@ still `GENERATED`. `30`–`33`, `35`–`37` and this document are all `PROPOSED`
 | Where a generated file is actually consumed | `37` §7.1 — the placeholder slot props every container exposes, and `CA-21`, which is the component-level statement of the same rule this document's §1 rests on: **a container that renders your file is not a screen that was approved** |
 | What may load the file in a browser | `36` §3's CSP gate. Until `OD-DOC-34` closes, no origin named in a prompt's delivery instruction is admitted by `13` §5.2, so intake succeeds and production fails |
 
-This document creates **no** `FR-*` requirement, **no** `SCR-*` screen ID and **no** new asset row: the
-24 prompts map onto rows that already exist in the 93-row register. It is a run sheet for the register,
-not a parallel copy of it.
+This document creates **no** `FR-*` requirement and **no** `SCR-*` screen ID. Its prompts map onto rows
+of the register, and the register is where a row is created: §4.1–§4.7 name 37 rows — the 36 generatable
+rows of §1 plus the `screenshot-set` that only a real build can produce — and every one of them exists in
+the 105-row `design-assets/manifests/asset-inventory.csv`, citing the `doc_ref` that made it necessary. It
+is a run sheet for the register, not a parallel copy of it.
 
 ---
 
@@ -330,5 +405,6 @@ not a parallel copy of it.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.2 | 2026-10-22 | Product Design Lead + Frontend Lead (website-design pass) | Brought in line with what has actually happened since issue, with every figure re-measured rather than restated. §1's title claimed no image was made — 18 have been made and intaken, so §1 now says which and repeats that **none is approved**. Production-route split **24/68/1 → 36/68/1** and the register width **93 → 105**, because the owner said go on the 12 website-section rows (`39` §3 reserves their slots); §4 gained **§4.7** carrying them with target, ratio, subject and the `12` §2.1 element each answers to, plus the three rules that make them different from the eighteen already run — family consistency, no invented claim, SVG at intake. §4's per-row `Status` cells were still reading `PLANNED`, so §4 now opens with a measured status block: all of §4.1–§4.5 `GENERATED`, §4.6 unchanged at `BLOCKED`, the homepage hero shipping **`-v02`** by owner choice with `-v01` kept as the rejected attempt, and `AMM-CUSTOMER-EMPTY-NOTIFICATIONS-600` named as a `-v02` candidate because its gold bell breaches `30` §3's 2 % metal budget. §2 records why its `STRICTLY FORBIDDEN` wall is kept as the requirement record but is **not** the wording that gets past a content filter — the pattern run was refused, and the operative reword (positive framing, `KEEP THE IMAGE TO:`, only *no text*/*no numbers* left negative, person/face/brand/plate reject criteria relocated to the human checklist with none dropped) lives in `maintenance/prompts/00-START-HERE.md`. **No palette value, no ceiling, no `OD-*` status, no approval and no `never generate` rule changed.** | §1, §2, §4, §4.7, §8, Revision History, header |
 | 1.1 | 2026-10-21 | Product Design Lead (design-engineering structure pass) | Depends On gained `36` §3 and `37` §7.1, and §8’s traceability table gained the two rows it was missing: **where a generated file is consumed** (`37` §7.1’s placeholder slot props, and `CA-21`, the component-level form of this document’s own rule — a container that renders your file is not a screen that was approved) and **what may load it in a browser** (`36` §3: until `OD-DOC-34` closes, no origin named in a delivery instruction is admitted by `13` §5.2, so intake succeeds and production fails). **No prompt was rewritten, none was run, and no image was generated** — the 24/68/1 production-route split, the style lock, the universal negative prompt, the 18 runnable rows and the 6 category-blocked rows are all as issued, and §5 still records that they were written without being executed. | §8, Depends On, Revision History, header |
 | 1.0 | 2026-10-21 | Product Design Lead + Frontend Lead (asset pass) | First issue. 93 inventory rows classified by production route and **measured**, not estimated: 24 generatable (18 runnable now, 6 `BLOCKED` on the category decision), 68 vector/authored, 1 real-capture-only. Style lock and negative prompt derived from `30` §3's measured tokens. Per-row prompts with target size, ratio, intake filename and reject criteria. Three limits stated that the brief did not anticipate: no alpha channel from most models, models approximate sizes, and generated files cannot be claimed as brand-owned while `OD-COM-12` is open. `AMM-CONTROL-DENIED` carries the `03` §5 no-padlock rule; the earnings and settlement rows carry the no-financial-claim rule; two salon/beauty prompts carry the `BP-01`/`BP-02` compliance note. Intake procedure, never-generate list and traceability added. **No prompt was executed and no asset was generated in this pass; nothing here is approved.** | All |

@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-26 |
-| Version | 1.6 |
+| Version | 1.7 |
 | Status | **Approved for Design & Development — commercial terms are PROPOSED and NOT YET LEGALLY EXECUTED** |
 | Owner | Founder / Project Owner |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `00`, `17`, `18`, `19`, `21` |
 
 ---
@@ -146,8 +146,10 @@ The following is the `[PROPOSED]` scope that the initial development fee is unde
 > design gate consists of. **`OD-DOC-36` asks the logically prior question, and it is unresolved:** under
 > the owner's placeholder-first direction (`30` §5.3) a screen may be reviewed with every media slot an
 > empty container, so a partial approval of a *layout* could be presented as the event that triggers this
-> instalment. **The design-system and palette passes that produced `30`–`34` did not approve anything and
-> did not trigger anything**: all five documents are `PROPOSED`, no image has been generated, and no
+> instalment. **The design-system and palette passes that produced `30`–`34`, and the website-design pass
+> that produced `39`, did not approve anything and did not trigger anything**: every one of those
+> documents is `PROPOSED`, the 18 raster masters generated on 2026-10-22 sit at `GENERATED` with
+> **`NOT_APPROVED`** and none has an owner's approval record (`DEC-03`), and no
 > document here may be read as the owner's sign-off. **The same applies to `35`–`37`, added by the
 > design-engineering pass:** a folder tree, an admitted library and a component contract are not a
 > designed screen — they describe how approved design would be built, and none of the three is approved.
@@ -318,7 +320,7 @@ not the development partner's deliverable.
 | The test strategy and release gates | Any bank record or tax filing |
 | The commercial and delivery **context** | Any verification of the payment reported in §4.2 |
 | The open decisions that must be closed | Any legal or tax conclusion |
-| The visual system, asset plan, screen catalog, prompt pack and design-engineering rules as **specification** (`30`–`37`) | **Any UI design approval.** `30`–`37` are `PROPOSED`; §4.1's second-instalment trigger has therefore not occurred and no document in this suite constitutes it (`R-45`, and `OD-DOC-36` on what would count as evidence) |
+| The visual system, asset plan, screen catalog, prompt pack and design-engineering rules as **specification** (`30`–`37`, `39`) | **Any UI design approval.** `30`–`37` and `39` are `PROPOSED`, and the artwork generated against them on 2026-10-22 is `GENERATED`, not `APPROVED` — production of an image is not acceptance of a design. §4.1's second-instalment trigger has therefore not occurred and no document in this suite constitutes it (`R-45`, and `OD-DOC-36` on what would count as evidence) |
 
 ---
 
@@ -346,6 +348,7 @@ not the development partner's deliverable.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.7 | 2026-10-22 | Founder + Product Lead (website-design pass) | **No amount, instalment, trigger, term, threshold or date changed.** §4.1's second-instalment note and §8's visual-system row carried a figure that stopped being true on 2026-10-22 — "**no image has been generated**". 18 raster masters were generated against `34`'s prompts and intaken, so the sentence was replaced with the distinction the trigger actually turns on: those rows are `GENERATED` with `NOT_APPROVED` and none carries an owner's approval (`DEC-03`), **production of an image is not acceptance of a design**, therefore the trigger **still has not occurred**. §8's span widened from `30`–`37` to `30`–`37` plus `39`, and `39` is named alongside `30`–`34` in §4.1 as another `PROPOSED` document that approves nothing. `R-45` and `OD-DOC-36` (what would count as evidence of UI approval) are unchanged and still open; `OD-COM-01` (no executed agreement) is still open. | §4.1, §8, header, Revision History |
 | 1.6 | 2026-10-21 | Founder + Product Lead (platform-mode pass) | §3.2 gained **item 15** and the scope-creep control gained its first live case. The platform-mode feature is **not one of §3.1's twelve areas** — it was instructed on 2026-10-21, after that list was written — so this document states it as **outside the initial development fee until the agreement is changed in writing**, `[PROPOSED]`, unapproved and **unpriced**. The note records what that actually costs: the `record_origin` migration touches all 88 tables, L3 enforcement needs an extra database connection identity (`OD-DOC-43`), and the promotion ceremony consumes a transactional-email send that is **not procured** (`24` P-06, `OD-MAIL-01`) — so two owner-side procurements gate a feature nobody has yet priced. **§9 gained `OD-COM-13`** asking exactly that, mirrored into `21` §7.1 in the same act. **No amount, instalment, percentage, deliverable or payment trigger was changed**, and nothing here constitutes agreement to build the feature. | §3.2 item 15 + note, §9 |
 | 1.5 | 2026-10-21 | Product Lead + Founder (design-engineering structure pass) | **No amount, instalment, trigger, term, date, deliverable, exclusion or scope boundary was altered.** §4.1’s annotation was restated with the register’s measured span (`OD-DOC-30`…`37` → `OD-DOC-30`…`39`) and gained the sentence this pass makes necessary: `35`, `36` and `37` — a folder tree, an admitted library table and a component contract — **are not a designed screen**, so none of the three can be read as the event on which the second ₹1,00,000 becomes payable. `R-45` (no approver for “UI design approval”) and `OD-DOC-36` (whether an empty container can certify the gate) are untouched and still open; this pass sharpens the distinction rather than closing either. | §4.1, Revision History, header |
 | 1.4 | 2026-10-21 | Product Lead + Founder (palette, storage and prompt-pack pass) | §4.1's annotation **restated, not relaxed — no amount, instalment, trigger, term or date changed.** The decision span tied to the UI-approval trigger widened from `OD-DOC-30`…`33` to `OD-DOC-30`…`37` and the checklist it points at from eight to **twelve** decisions (`30` §12), because the palette pass registered four more. The note now names `OD-DOC-36` as the logically prior question the payment trigger depends on: under the owner's placeholder-first direction (`30` §5.3) a reviewable screen may have every media slot as an empty container, so a layout-only approval could be presented as the event that makes ₹1,00,000 payable — which is `R-45` sharpened, not a new risk. §8's corresponding row widened to `30`–`34` and records that **no image has been generated** in this workspace. `OD-COM-01` (no executed agreement) and every amount above remain `[PROPOSED]`. | §4.1, §8, header, Revision History |

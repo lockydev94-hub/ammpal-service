@@ -3,7 +3,8 @@
 Every row carries a doc_ref: the section of Docs/ that makes the asset necessary. A row with no
 doc_ref is an invention and must not be added. Run from the project root.
 """
-import csv, os
+import csv, glob, os
+from PIL import Image
 
 OUT = 'design-assets/manifests/asset-inventory.csv'
 
@@ -109,9 +110,14 @@ add(asset_id='AMM-WEB-HERO-HOMEPAGE-1600', surface='WEB', asset_type='hero', sub
     filename_stem='AMM-WEB-HERO-HOMEPAGE-1600', width_px=1600, height_px=1000, format='webp+avif+png',
     transparency='no', variants='desktop-1600;mobile-780;light', intended_screens='WEB Home',
     alt_text_en='Technician servicing a home appliance in an Indian home', source_class='PHOTOGRAPHY',
+    generation_status='GENERATED', version='v02',
     doc_ref='12 sec 2.1 Home; 12 sec 9 LCP < 2.5 s on mid-range Android over 4G',
     notes='Byte budget <= 150 KB for the mobile crop; 2 MB reference PNGs in '
-          'visualize-image-of-project are NOT web-fit (measured 1.88-2.12 MB)')
+          'visualize-image-of-project are NOT web-fit (measured 1.88-2.12 MB). GENERATED 2026-10-22 '
+          'by ChatGPT - master PNG at design-assets/02-website/masters/, optimised exports at '
+          '.../exports/. v02 is the shipped master by owner choice (2026-10-22): the two versions are '
+          'both on disk and v01 stays as the rejected attempt, not as a deliverable. Still NOT_APPROVED: '
+          'approval is an owner act (32 sec 6, DEC-03).')
 add(asset_id='AMM-WEB-OG-PARTNER-1200', surface='WEB', asset_type='og-image',
     subject='partner landing preview', filename_stem='AMM-WEB-OG-PARTNER-1200', width_px=1200,
     height_px=630, format='png+webp', intended_screens='WEB /partner', doc_ref='12 sec 2 IA /partner')
@@ -128,6 +134,85 @@ add(asset_id='AMM-WEB-PLACEHOLDER-PARTNER-512', surface='WEB', asset_type='photo
     alt_text_en='Photo not yet provided', source_class='ILLUSTRATION',
     doc_ref='01 FR-CAT-05 technician card shows photo; 09 sec 4.4 technicians.photo_url',
     notes='Must never depict an identifiable person as a registered partner')
+
+# ---------------------- website section artwork (12 sec 2.1 elements; slots sized by 39 sec 3/6)
+# These twelve rows are the marketing-site artwork the owner approved for registration on 2026-10-22.
+# Scope follows the same direction: the site being designed sells home appliance repair, so every
+# subject is an appliance, a booking step or a support object - the cleaning/salon/plumbing imagery
+# stays where it is (the six BLOCKED SERVICE rows in maintenance/holding-blocked/).
+# Tiles and step cards are 4:3 at 800x600 because that is the ratio the reserved container holds
+# (30 sec 5.3 says category tile 4:3; 32 sec 3 and the older 800x800 rows say 1:1 - the conflict is
+# recorded in 39 sec 6 rather than resolved here).
+WEB_SECTIONS = [
+    ('AC-REPAIR', 'air conditioner repair', 'split air-conditioner indoor unit on a pale wall',
+     'Air conditioner repair', '12 sec 2.1 Home service categories; 12 sec 2.1 /services'),
+    ('FRIDGE-REPAIR', 'refrigerator repair', 'two-door refrigerator with the doors closed',
+     'Refrigerator repair', '12 sec 2.1 Home service categories; 12 sec 2.1 /services'),
+    ('WASHING-MACHINE-REPAIR', 'washing machine repair', 'front-load washing machine',
+     'Washing machine repair', '12 sec 2.1 Home service categories; 12 sec 2.1 /services'),
+    ('MICROWAVE-REPAIR', 'microwave oven repair', 'countertop microwave',
+     'Microwave oven repair', '12 sec 2.1 Home service categories; 12 sec 2.1 /services'),
+    ('WATER-PURIFIER-REPAIR', 'water purifier repair',
+     'under-sink water purifier with one visible filter cartridge', 'Water purifier repair',
+     '12 sec 2.1 Home service categories; 12 sec 2.1 /services'),
+    ('STEP-SEARCH', 'how it works step 1', 'a plain house roofline with a soft rounded search ring',
+     'Tell us the appliance and your area', '12 sec 2.1 Home how-it-works; 12 sec 2.1 /services'),
+    ('STEP-SLOT', 'how it works step 2', 'a blank calendar card with one chosen space marked',
+     'Choose a time that suits you', '12 sec 2.1 Home how-it-works; 23 sec 11 slot availability'),
+    ('STEP-VISIT', 'how it works step 3', 'a service toolbox on a folded mat before a closed door',
+     'A service toolbox resting on a floor mat in front of a closed door',
+     '12 sec 2.1 Home how-it-works; 12 sec 3.11 technician visit'),
+]
+for slug, subj, desc, alt, ref in WEB_SECTIONS:
+    add(asset_id='AMM-WEB-ILLU-%s-800' % slug, surface='WEB', asset_type='illustration',
+        subject=subj, filename_stem='AMM-WEB-ILLU-%s-800' % slug, width_px=800, height_px=600,
+        format='svg', transparency='yes', variants='light',
+        intended_screens='WEB Home section grid; WEB /services tiles' if 'REPAIR' in slug
+        else 'WEB Home how-it-works steps',
+        alt_text_en=alt, source_class='ILLUSTRATION', doc_ref=ref,
+        notes='%s. One flat two-fill-plus-accent drawing on #FFFFFF from the 39 prompt pack - the five '
+              'appliance tiles and the three step cards must read as one family (same camera height, '
+              'same object scale, same ground). Ships as traced SVG; a raster export is the '
+              'design-time placeholder (30 sec 11, 32 sec 4 ceiling 12 KB). Generated != owned while '
+              'OD-COM-12 is open.' % desc)
+
+for slug, subj, desc, alt, ref in [
+    ('TRUST-VERIFIED', 'trust signals band',
+     'a screwdriver and a spanner laid side by side on a folded service cloth',
+     "A technician's tools laid out ready for a visit",
+     '12 sec 2.1 Home trust signals; 12 sec 2.1 /about'),
+    ('PRICING-TRANSPARENT', 'price transparency',
+     'a plain estimate sheet with three blank bands beside it',
+     'An estimate sheet with three blank bands beside it',
+     '12 sec 2.1 /pricing; 00 FR-01/FR-03 price snapshot'),
+    ('SUPPORT-HELPLINE', 'support helpline',
+     'a desk telephone handset in its cradle beside a closed notebook',
+     'A desk telephone handset resting in its cradle beside a closed notebook',
+     '12 sec 2.1 /support; 05 sec 3 toll-free contact'),
+]:
+    add(asset_id='AMM-WEB-ILLU-%s-800' % slug, surface='WEB', asset_type='illustration',
+        subject=subj, filename_stem='AMM-WEB-ILLU-%s-800' % slug, width_px=800, height_px=600,
+        format='svg', transparency='yes', variants='light',
+        intended_screens='WEB Home %s; WEB /%s' % (subj, 'pricing' if slug == 'PRICING-TRANSPARENT'
+        else 'support' if slug == 'SUPPORT-HELPLINE' else 'about'),
+        alt_text_en=alt, source_class='ILLUSTRATION', doc_ref=ref,
+        notes='%s. The alt describes the drawing and asserts nothing: verification, a price and the '
+              'toll-free number are data rendered as interface text, never artwork (34 sec 7, DD-06). '
+              'Reject if a badge, seal, star, shield, figure, currency mark or phone number appears in '
+              'the pixels. Ships as traced SVG; raster is the placeholder (30 sec 11, 32 sec 4).' % desc)
+
+add(asset_id='AMM-WEB-HERO-PARTNER-1600', surface='WEB', asset_type='hero',
+    subject='partner landing hero', filename_stem='AMM-WEB-HERO-PARTNER-1600', width_px=1600,
+    height_px=1000, format='webp+avif+png', transparency='no',
+    variants='desktop-1600;mobile-780;light', intended_screens='WEB /partner',
+    alt_text_en='Work with AmmPal Service as a technician or a partner branch',
+    source_class='ILLUSTRATION',
+    doc_ref='12 sec 2 IA /partner; 12 sec 2.1 /partner key elements; 26 sec 4.1 partner claims',
+    notes='At most four unmarked objects (toolbox, rolled cloth, screwdriver, split A/C unit) with the '
+          'left half of the frame kept as empty pale space for the headline, which is interface text. '
+          'No earnings, payout date or partner-count claim may be drawn into it - 26 sec 4.1 and '
+          '34 sec 7 both refuse invented commercial claims. Ceiling 150 KB on the mobile crop '
+          '(32 sec 4).')
 
 # ---------------------------------------------- customer app empty/success (12 sec 3.2 screens)
 CUST_EMPTY = [
@@ -276,9 +361,39 @@ for aid, fn, w, h, digest in REFS:
         notes='Reference only. Not a brand asset, not web-sized, and not reusable in product UI until '
               'OD-COM-12 settles design-asset IP')
 
+# --------------------------------------------------- generation status is derived from disk
+# A row reads GENERATED only if its master file actually exists in that section's masters/ directory,
+# so the register cannot claim an asset it cannot point at, and re-running this script after an intake
+# is the whole write-back. BLOCKED rows are never flipped here: Docs/32 sec 6 says a BLOCKED row cannot
+# enter GENERATED, so a generated file for one belongs in maintenance/holding-blocked, not in
+# design-assets/. approval_status stays NOT_APPROVED in every case - approval is an owner act (DEC-03).
+SURFACE_DIR = {'BRAND': '01-brand', 'WEB': '02-website', 'CUSTOMER': '03-customer-app',
+               'PARTNER': '04-partner-app', 'CONTROL': '05-control-center', 'STORE': '08-store',
+               'SERVICE': '09-service-catalogue'}
+
+for r in rows:
+    section = SURFACE_DIR.get(r['surface'])
+    if not section or r['generation_status'] != 'PLANNED':
+        continue
+    found = sorted(glob.glob('design-assets/%s/masters/%s-v*.png' % (section, r['filename_stem'])))
+    if not found:
+        continue
+    newest = found[-1]
+    with Image.open(newest) as im:  # measured, never asserted (Docs/32 sec 3)
+        mw, mh = im.size
+    r['generation_status'] = 'GENERATED'
+    r['version'] = 'v' + os.path.basename(newest).rsplit('-v', 1)[1][:2]
+    r['notes'] = (r['notes'] + ' | ' if r['notes'] else '') + (
+        'GENERATED 2026-10-22 by ChatGPT from a maintenance/prompts/ block. Master %s measured %dx%d; '
+        'exports regenerable with maintenance/scripts/intake_asset.py. NOT_APPROVED: approval is an '
+        'owner act (32 sec 6, DEC-03).' % (newest.replace('\\', '/'), mw, mh))
+
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 with open(OUT, 'w', newline='', encoding='utf-8') as fh:
-    wtr = csv.DictWriter(fh, fieldnames=COLS)
+    # lineterminator is explicit because csv.writer defaults to CRLF while the committed register is
+    # LF, and .gitattributes carries `* -text` (no EOL normalisation) - without this, every run on
+    # Windows rewrites all 94 lines and the register diff hides the one row that actually changed.
+    wtr = csv.DictWriter(fh, fieldnames=COLS, lineterminator='\n')
     wtr.writeheader()
     wtr.writerows(rows)
 

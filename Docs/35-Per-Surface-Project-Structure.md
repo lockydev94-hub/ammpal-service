@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-35 |
-| Version | 1.2 |
+| Version | 1.3 |
 | Status | **PROPOSED — not approved.** A scaffold target, not a description of anything that exists. **No directory named in this document has been created**; the workspace holds `Docs/`, `design-assets/` (registers only), `visualize-image-of-project/` (4 reference PNGs) and eight root Python scripts. |
 | Owner | Frontend Lead (web + Control Center + Flutter) + Engineering Lead (API) |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `14` §1/§2/§2.1/§6, `08` §2/§9, `27` §6, `12` §2–§6, `30` §3–§7/§11, `33` §5, `22` ADR-011/ADR-012, `13` §5.2, `16` §5.2, `21` §2/§3/§7 |
 | Blocks | the front-end scaffold, the API scaffold, `36` §5 (a token package needs a home), `37` §3, and `29` §4.8's consistency gate |
 
@@ -44,6 +44,17 @@ directories**, 164 of them leaves; §4's FastAPI alternative does **not**, becau
 decision. `.gitkeep` is the only file in any leaf, and the emptiness is the finding, not an oversight: an
 empty `apps/api/src/modules/booking/domain/` satisfies no rule in `37`, ships no screen, and fails
 `17` `P0-03`, which asks for something that **builds**. Every blocker in §10 below is still open.
+
+**Status, superseded 2026-10-22 for the front end only.** The sentence "`.gitkeep` is the only file in any
+leaf" no longer holds for four workspaces: `apps/web`, `packages/ui`, `packages/contracts` and
+`packages/design-tokens` carry **87 source and config files** between them — `package.json`, lockfile,
+`tsconfig`, the token build, the primitives, the fixtures and Home's eight sections. The rest of the finding
+stands unchanged, and is the reason this paragraph was written rather than the block above edited: **162
+`.gitkeep` leaves are still empty**, nothing was placed at the repository root (the owner's constraint when
+approving the install, keeping `OD-14-04` genuinely open rather than silently answered), `P0-03` still asks
+for `apps/*` **and** `packages/*` building under CI and there is no workflow YAML and no backend, and every
+blocker in §10 is still open. The application code is also **uncommitted by owner direction** — `14` §2
+records what the public remote carries.
 
 ---
 
@@ -305,7 +316,11 @@ Control Center") becomes three timelines.
 > each decides something the **first file** in those folders has to get right, and choosing wrong is a
 > rewrite rather than a rename. `OD-14-04` decided `apps/` vs separate repos, which the skeleton assumed;
 > if separate repos win, this is not a move but a split of history and CI. That assumption is why the
-> scaffold carries no `package.json`: a folder can be renamed, a published dependency cannot.
+> scaffold carried no `package.json`: a folder can be renamed, a published dependency cannot. **That is no
+> longer true of the front end** — four workspaces now have one each (`14` §2's 2026-10-22 note), so the
+> assumption has been *spent*, not tested: if `OD-14-04` decides separate repositories, `apps/web` splits with
+> its own lockfile and the three `packages/*` imports `PS-11` relies on become published dependencies. Nothing
+> was placed at the repository root, which is why the decision is still open rather than pre-empted.
 
 | Blocker | Why it decides a directory, not a detail |
 |---|---|
@@ -331,6 +346,7 @@ owner's stated reason for asking for these documents.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.3 | 2026-10-22 | Frontend Lead (first front-end files written) | **Two status sentences corrected against the tree, both kept visible rather than rewritten.** §1's 2026-10-21 block is untouched and a dated block follows it: its "**`.gitkeep` is the only file in any leaf**" is now true of **162** leaves, not all of them — `apps/web`, `packages/ui`, `packages/contracts` and `packages/design-tokens` hold **87 source/config files**, while the rest of the finding stands exactly as written (`P0-03` unmet, every §10 blocker open, nothing at the repository root). §10's blockquote gained the consequence: the monorepo assumption the scaffold made has been **spent, not tested** — four lockfiles and three workspace-local imports exist on it, so an `OD-14-04` answer of "separate repos" is now a split of history and CI rather than a folder move, and it is still the reason `apps/web` sits where §5 puts it. `OD-DOC-38` is unaffected: no backend directory was created and the FastAPI alternative remains unbuilt. **No rule (`PS-01`…`PS-23`), no directory in any §3–§9 tree, no import direction and no blocker row changed.** | §1, §10, Revision History, header |
 | 1.2 | 2026-10-21 | Eng Lead (scaffold and git-baseline pass) | §1 gained a **Status, 2026-10-21** paragraph: the trees in this document stopped being only drawings — the directories of `14` §2/§2.1 and here were created as an empty skeleton (221 directories, `.gitkeep` in the 164 leaves only) — and the paragraph states what that does **not** buy: an empty `apps/api/src/modules/booking/domain/` satisfies no rule, ships no screen, fails `P0-03`, and every `[BLOCKER]` in §10 is still open. §10 gained a lead-in that re-reads its table as **what-it-stops** rather than whether-the-folders-exist, and names the asymmetry the scaffold makes visible: **a folder can be renamed, a published dependency cannot**. **No tree, path, package or `PS-*` rule was renamed, added or removed**, and no file was written into any created directory. | §1, §10 |
 | 1.1 | 2026-10-21 | Eng Lead (platform-mode pass) | §9's four-question placement test gained **two mode questions**, and they are the only pair in the table whose 'no' branch is a defect rather than a refactor: mode or lifecycle logic goes in the owning backend module with the guard as cross-cutting middleware and its database half as a migration — and **there is no legitimate home for the mode in a front-end package**, because reading it from a header, a store, a config file or an environment variable is `38` `PM-02` / `14` `ENV-07` territory. The indicator itself is promoted **once** into `packages/ui` under `PS-21` rather than forked per surface; its Control Center placement stays open (`OD-DOC-44`) and no component is named (`CA-00`). §10 gained **`OD-DOC-43`** as a structural blocker — where the guard is enforced decides **how many connection configurations and deployables exist**, which is a directory question, not a detail inside one module. **No tree, path, package or rule was renamed or removed.** | §9, §10 |
 | 1.0 | 2026-10-21 | Frontend Lead + Engineering Lead (design-engineering structure pass) | First issue, at the owner's direction to document the folder and file structure of every surface plus the backend. Deliberately does **not** restate the top-level tree, which `14` §2 already owns and `08` §9 and `27` §6 mirror — instead `PS-01` names `14` §2 canonical and `DC-04` requires all three to move together. Adds the interiors no document held: website route folders mapped to `12` §2/§2.1, Control Center routes and the `nav.config.ts` permission gap, the two Flutter feature-first skeletons with the partner-only `sync/` and `evidence/`, the shared token package's consumer contract, and a four-question file-placement test. **Records the owner's "FastAPI" instruction as a conflict rather than a change**: `ADR-011` (Accepted, NestJS + TypeScript) and `ADR-012` stand untouched, `14` §1/§2/§2.1 and `08` §9 are unedited, and the collision is registered as `OD-DOC-38` `[BLOCKER]` with an eight-row consequence table and a contingent Python tree in §4 tagged as contingent. Also registers `OD-DOC-39` for the worker-placement disagreement between `14` §2 and `08` §9 that this pass discovered. No package version, licence cost, repository URL or capability was invented; nothing here is scaffolded and no directory named in this document exists. | All |

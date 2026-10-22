@@ -3,11 +3,11 @@
 | Field | Value |
 |---|---|
 | Document ID | AMM-SVC-DOC-28 |
-| Version | 1.6 |
+| Version | 1.7 |
 | Status | Approved for Design & Development |
 | Owner | Product Lead + QA Lead |
 | Classification | Internal — Confidential |
-| Last Updated | 2026-10-21 |
+| Last Updated | 2026-10-22 |
 | Depends On | `01`, `03`, `04`, `06`, `07`, `09`, `10`, `12`, `15`, `21`, `22`, `30`, `31`, `32`, `33`, `34` |
 
 ---
@@ -54,7 +54,7 @@ No row claims present-tense verification.
 | Open decisions | `OD-xxx`, `OD-COM-xx`, `ORG-xx` | `21`, `26` | 237 rows (47 blockers) |
 | Risks | `R-xx` | `19` §2 | 50 |
 | Screens | `SCR-<SURFACE>-<NN>` | `12` §2.1/§3.2/§4.2/§5.2, `33` §3–§4 | 68 (WEB 9 · CUS 26 · PAR 21 · CC 12); **every row is `UNDESIGNED`** — no `SCR-PD-*` issued for the conditional partner dashboard |
-| Visual & brand assets | `AMM-<SURFACE>-<TYPE>-<SUBJECT>-<SIZE>-v<NN>` | `32` §2 | 93 inventory rows (83 `PLANNED` · 6 `BLOCKED` · 4 `REGISTERED`); **0 `APPROVED`** |
+| Visual & brand assets | `AMM-<SURFACE>-<TYPE>-<SUBJECT>-<SIZE>-v<NN>` | `32` §2 | 105 inventory rows (77 `PLANNED` · 18 `GENERATED` · 6 `BLOCKED` · 4 `REGISTERED`); **0 `APPROVED`** — a `GENERATED` file is not an accepted one (`32` §6) |
 
 **How these counts were produced, and why the earlier ones were wrong.** Each figure is a count of
 *distinct identifiers in the named document*, taken by a row- or token-anchored scan — not by
@@ -437,6 +437,7 @@ last because it is blocked by `OD-10-06` before it can be answered at all.
 
 | Version | Date | Author | Summary | Sections changed |
 |---|---|---|---|---|
+| 1.7 | 2026-10-22 | Product Lead + QA Lead (website-design pass) | §2's asset count re-measured from the regenerated register, not carried forward: **93 → 105 inventory rows**, and the status split restated as it now prints — 77 `PLANNED`, **18 `GENERATED`**, 6 `BLOCKED`, 4 `REGISTERED`, **0 `APPROVED`**. The `0 APPROVED` is the row's point and it survives the artwork: `32` §6 keeps a `GENERATED` file out of a build, so no requirement line gains a design asset it could ship. **No requirement ID, coverage figure, `FR`/`BP` classification, risk or open-decision count in this matrix changed** — the 68 screens remain `UNDESIGNED` and the traceability arithmetic is untouched. | §2, Revision History, header |
 | 1.6 | 2026-10-21 | Product Lead + QA Lead (platform-mode pass) | **§3.10 added — `FR-MODE-01`…`08`, eight traceability rows**, and this is the first pass in the document's history that added **requirements** rather than documents, so coverage moved **91 of 91 → 99 of 99**, verified by a **two-way** set diff of `FR-*` first cells between `01` and this file (both directions empty, no duplicate). §2 re-measured from the source documents, not inherited: entities 86 → **88**, `10` §4 endpoints 117 → **122 rows / 116 paths**, ADRs 25 → **26**, FRs 91 → **99**, open decisions 231 → **237 / 47 blockers**, risks 48 → **50**. Two figures this pass had itself published were wrong and are named rather than smoothed away: an intermediate **123** endpoint rows and a **236 / 142** register total. §5 gained **six** impact-map rows (`OD-DOC-40`…`44` plus `OD-COM-13`) and the closing note distinguishes this pass from `30`–`37`: traced and approved are now different facts, and §3.10's `PROPOSED` status is load-bearing. **No row was renumbered, withdrawn or re-marked.** | §2, §3.8, §3.10 (new), §5, §1 |
 | 1.5 | 2026-10-21 | Product Lead + QA Lead (design-engineering structure pass) | §2 restated **from the register rather than inherited**: open decisions 224 → **231 rows, 45 blockers**, risks 47 → **48**. §5 gained **seven rows** — `OD-DOC-38`, `OD-DOC-39` and `OD-14-09`…`13` — each mapped to the documents and rule families it actually blocks (`14` §1/§2/§2.1, `08` §9, `27` §6, `packages/contracts`, `16` §5/§9, and `35` `PS-*`, `36` `LB-*`, `37` `CA-*`). **They add no `FR-*` requirement**, and they are traced to documents and rules rather than to requirements for the same reason `32` and `33` are: those namespaces are this suite’s own. The distinction this pass introduces is between the **design-gate** rows, which block UI approval and therefore ₹1,00,000 (`26` §4.1, `R-45`), and the **construction** rows, which block the scaffold, the first component file and the first transition. §5’s sequencing recommendation now places `OD-DOC-38` **above** `OD-14-01`, because an ORM is chosen inside a framework and answering the data-layer question first asks it twice. | §2, §5, Revision History, header |
 | 1.4 | 2026-10-21 | Product Lead + QA Lead (palette, storage and prompt-pack pass) | §2 restated from the register, not inherited: open decisions **220 → 224 rows, 43 → 44 blockers**, risks **45 → 47** (re-scanned as `R-01`…`R-47`, contiguous and unduplicated, rather than incremented from prose). §5 gained four rows — `OD-DOC-34` (`[BLOCKER]`: the third-party media store versus `13` §5.2's `img-src 'self'` and `24` §11's no-public-read rule, which blocks the first `<img>` and the first upload), `OD-DOC-35` (English-first versus `12` §8 i18n-03's 100 % `or`/`hi`), `OD-DOC-36` (placeholder-first versus what the design gate accepts as evidence — the `R-45` trigger seen from the asset side), and `OD-DOC-37` (the super-admin storage surface that **cannot be traced today at all**, because the screen → route → token join it would need is what `OD-10-06` says does not exist). The closing note widened to `30`–`34` and states that `34` adds no `FR-*` either, and that leaving `OD-DOC-37` untraceable is deliberate rather than an omission. `31` and `34` added to Depends On. **No §3 row was edited, renumbered or withdrawn, and no `FR-UX-*` ID was invented.** | §2, §5, §7, header |
